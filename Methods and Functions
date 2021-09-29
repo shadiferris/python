@@ -1,0 +1,1180 @@
+
+
+#methods and the python documentation
+
+mylist = [1,2,3]
+
+#append add an item to the end of mylist
+mylist.append(4)
+
+mylist
+
+[1, 2, 3, 4]
+
+#pop removes the last item off the list
+mylist.pop()
+
+4
+
+mylist
+
+[1, 2, 3]
+
+#type list. then hit tab. 
+mylist.insert
+
+#then hit shift+tab and jupiter notebook will provide information about the method.
+
+<function list.insert(index, object, /)>
+
+#for more info, can run built in help function 
+
+help(mylist.insert)
+
+Help on built-in function insert:
+
+insert(index, object, /) method of builtins.list instance
+    Insert object before index.
+
+#introduction to functions
+
+#def keywords
+#example
+#def name_of_function()
+
+def name_of_function():
+    print("Hello")
+
+def name_of_function(name):
+    print("Hello "+name)
+
+def add_function(num1,numb2):
+    return num1+num2
+
+#basics with python functions
+
+def say_hello():
+    print("hello")
+    print("how")
+    print("are")
+
+#can be executed like this
+say_hello()
+
+hello
+how
+are
+
+say_hello
+
+<function __main__.say_hello()>
+
+def say_hello(name):
+    print(f'Hello {name}')
+
+say_hello('shadi')
+
+Hello shadi
+
+def myfunc(name='shadi'):
+    print('Hello {}'.format(name))
+
+#if a value (name) isnt entered when the function is run, we can place a default value in the output. Good for troubleshooting
+def say_hello(name='DEFAULT'):
+    print(f'Hello {name}')
+
+say_hello()
+
+Hello DEFAULT
+
+def add_num(num1,num2):
+    return num1+num2
+
+add_num(10,20)
+
+30
+
+result = add_num(10,20)
+
+result
+
+30
+
+def print_result(a,b):
+    print(a+b)
+
+def return_result(a,b):
+    return(a+b)
+
+result = print_result(10,20)
+
+30
+
+result
+
+type(result)
+
+NoneType
+
+result = return_result(10,20)
+
+result
+
+30
+
+def sum_numbers(num1,num2):
+    return num1+num2
+
+sum_numbers(10,10)
+
+20
+
+num = sum_numbers(10,10)
+
+num
+
+20
+
+#Logic with Python Functions
+
+# symbol % is a mod to determine the remainder after a division
+2 % 2
+
+0
+
+3 % 2
+
+1
+
+40 % 2 
+
+0
+
+# bollean equation which returns true
+40 % 2 == 0
+
+True
+
+# bollean equation which returns false
+
+41 % 2 == 0
+
+False
+
+def even_check(number):
+    result = number % 2 == 0
+    return result
+
+even_check(20)
+
+True
+
+even_check(21)
+
+False
+
+#same as the above equation
+def even_check(number):
+    return number % 2 == 0
+
+even_check(30)
+
+True
+
+even_check(31)
+
+False
+
+#check inside of a list - return true if any number is even inside of a list
+
+def check_even_list(num_list):
+
+    for number in num_list:
+        if number % 2 == 0:
+            return True
+        else:
+            pass
+
+#define a function called myfunc that takes in aboolean value (true or false). if true return "hello", and if false, return 'goodbye'
+
+def myfunc(a):
+    if a == True:
+        return 'Hello'
+    elif a == False:
+        return 'Goodbye'
+
+#all numbers in the list are odd.. which cases the function to end ie pass
+check_even_list([1,7,3])
+
+check_even_list([1,2,4])
+
+True
+
+# if you want to create a message for FALSE, you must place the return function outside the if statement and make it in the for loop.
+
+def check_even_list(num_list):
+
+    for number in num_list:
+        if number % 2 == 0:
+            return True
+        else:
+            pass
+    
+    return False
+
+check_even_list([1,2,4])
+
+True
+
+check_even_list([1,7,3])
+
+False
+
+#I want to now return all the even numbers within the list, after checking.
+
+def check_even_list(num_list):
+#return all even numbers in the list
+    
+    #placeholder variable
+    even_number = []
+
+
+    for number in num_list:
+        if number % 2 == 0:
+            #adding all the even numbers in "number" to the even_number variable
+            even_number.append(number)
+        else:
+            pass
+    
+    return even_number
+
+check_even_list([1,7,3])
+
+[]
+
+check_even_list([1,7,4,8])
+
+[4, 8]
+
+#Tuples unpacking with python functions
+
+stock_prices = [('apple',200),('google',400),('msft',100)]
+
+for items in stock_prices:
+    print(items)
+
+('apple', 200)
+('google', 400)
+('msft', 100)
+
+#retrieve the company name using "ticker"
+for ticker,price in stock_prices:
+    print(ticker)
+
+apple
+google
+msft
+
+#retrieve the company price using "price"
+for ticker,price in stock_prices:
+    print(price)
+
+200
+400
+100
+
+#retrieve the company price using "price" at a 10% increase in price
+for ticker,price in stock_prices:
+    print(price+(0.1*price))
+
+220.0
+440.0
+110.0
+
+work_hours = [('Abby',100),('Billy',1200),('Cassie',800)]
+
+def employee_check(work_hours):
+    current_max = 0
+    employee_of_month = ''
+    
+    for employee,hours in work_hours:
+        if hours > current_max:
+            current_max = hours
+            employee_of_month = employee
+            
+        else:
+            pass  
+    
+    
+    #return 
+    return (employee_of_month,current_max)
+
+employee_check(work_hours)
+
+('Billy', 1200)
+
+result = employee_check(work_hours)
+
+result
+
+('Billy', 1200)
+
+#tuple unpacking with a function call
+name,hours =  employee_check(work_hours)
+
+name
+
+'Billy'
+
+hours
+
+1200
+
+#interactions between python functions
+
+#creating a shuffle list randomiser which mimics the three cup and ball game.
+
+example = [1,2,3,4,5,6,7]
+
+#import shuffle function
+from random import shuffle
+
+shuffle(example)
+
+example
+
+[5, 7, 6, 1, 3, 4, 2]
+
+#creating own function for shuffle
+def shuffle_list(mylist):
+    shuffle(mylist)
+    return mylist
+
+result = shuffle_list(example)
+
+result
+
+[7, 4, 5, 1, 3, 2, 6]
+
+mylist = [' ', 'O', ' ']
+
+shuffle_list(mylist)
+
+['O', ' ', ' ']
+
+#creating the guess function
+
+def player_guess():
+    
+    guess=''
+    
+    while guess not in ['0', '1', '2']:
+        guess = input("Pick a number: 0, 1 or 2")
+    
+    return int(guess)
+
+player_guess()
+
+Pick a number: 0, 1 or 28
+Pick a number: 0, 1 or 210
+Pick a number: 0, 1 or 21
+
+1
+
+#creating a third function which combines the player_guess  and shuffle_list functions.
+
+def check_guess(mylist,guess):
+    if mylist[guess] == 'O':
+        print("CORRECT!")
+    else:
+        print("Wrong Guess!")
+        print(mylist)
+
+#setting up the script with logic as if it were being run from a .py file
+
+#INITIAL LIST
+mylist = [' ', 'O', ' ']
+
+#SHUFFLE LIST
+mixedup_list = shuffle_list(mylist)
+
+#USER GUESS
+guess = player_guess()
+
+#CHECK GUESS
+check_guess(mixedup_list,guess)
+
+# def a function that takes two arguments and returns true if the first value is greater than the second. False if it is less than or equal to the second.
+
+def is_greater(one,two):
+    if one < two:
+        return True
+    else:
+        return False
+
+# 49 *args and **kwargs in python - args = arguments , kwargs = key word arguments
+
+ def myfunc(a,b):
+        #returns 5% of the sum of a and b
+        return sum((a,b)) * 0.05
+
+myfunc(40,60)
+
+5.0
+
+ def myfunc2(a,b,c=0,d=0,e=0):
+        #returns 5% of the sum of a and b
+        return sum((a,b,c,d,e)) * 0.05
+
+myfunc2(40,60,100,100)
+
+15.0
+
+def myfunc(*args):
+    #return sum(args) * 0.05
+    print(args)
+    #args returns values as a tuple
+
+myfunc(2,4,5,6,8,100,100)
+
+(2, 4, 5, 6, 8, 100, 100)
+
+# *args is an arbitary name, as long as there is a * infront of a word, ie *spam, *cat.. the value will be returned
+
+def myfunc(*dog):
+    for items in dog:
+        print(items)
+
+myfunc(10,20)
+
+10
+20
+
+# **kwargs return back dictionary.. anything with a double ** returns back dictionary
+
+def myfunc(**kwargs):
+    print(kwargs)
+    if 'fruit' in kwargs:
+        print('my fruit of choice is {}'.format(kwargs['fruit']))
+  #  if 'veggie' in kwargs:
+   #     print('my veggie of choice is {}'.format(kwargs['veggie']))
+    else:
+        print('I did not find any fruit here')
+
+myfunc(fruit='apple',veggie = 'lettuce')
+
+{'fruit': 'apple', 'veggie': 'lettuce'}
+my fruit of choice is apple
+
+def myfunc(*args,**kwargs):
+    print(args)
+    print(kwargs)
+    print('I would like {} {}'.format(args[0],kwargs['fruit']))
+
+myfunc(10,20,30,fruit = 'orange', food = 'eggs' , animal = 'dog')
+
+(10, 20, 30)
+{'fruit': 'orange', 'food': 'eggs', 'animal': 'dog'}
+I would like 10 orange
+
+#define a function that takes an arbitary number of arguments and returns a list containing only those arguments that are even.
+def myfunc(*args):
+    #placeholder variable
+    even_number = []
+    
+    for number in args:
+        if number % 2 == 0:
+            #adding all the even numbers in "number" to the even_number variable
+            even_number.append(number)
+            
+        else:
+            pass
+    
+    return even_number
+
+myfunc(1,2,3,4)
+
+[2, 4]
+
+# define a function that takes in a string and returns a matching string where ever letter is uppercase and every odd letter is lowercase.
+# assume that the incoming string only containsletters and dont worry about numbers spaces or punctionation.
+
+def myfunc(word):
+    string_lst = []
+    
+    for index in range(0,len(word)):
+        if index % 2 != 0:
+            string_lst.append(word[index].upper())
+        else:
+            string_lst.append(word[index].lower())
+            
+    return ''.join(string_lst)
+
+myfunc('heldlsbfkldhfjkldhfldhkljdhklhdkjfhdjkhfjkhsjkhsjkhslo')
+
+'hElDlSbFkLdHfJkLdHfLdHkLjDhKlHdKjFhDjKhFjKhSjKhSjKhSlO'
+
+# Function practice exercise
+
+# LESSER OF TWO EVENS: Write a function that returns the lesser of two given numbers if both numbers are even, but returns the greater if one or both numbers are odd 
+
+def lesser_of_two_evens(a,b):
+    #check if both numbers are even using % mod 
+    if a%2 == 0 and b%2 == 0:
+        #checking if both numbers are even:
+        if  a < b:
+            return a
+        else:
+            return b
+        #most efficent method
+        # return min(a,b)
+        
+    else:
+        #one or both numbers are odd, we want to return the greater number
+        if a < b:
+            return b
+        else:
+            return a
+        
+        #most efficent method
+        # return max(a,b)
+        
+    pass
+
+lesser_of_two_evens(10,6)
+
+6
+
+lesser_of_two_evens(10,102)
+
+10
+
+#these are existing "min" and "max" functions within python to pull out the lowest and highest number.
+max(10,20)
+#min(10,20)
+
+#Write a function takes a two-word string and returns True if both words begin with same letter
+def animal_crackers(text):
+    
+    #split each word into a list using .split() 
+    wordlist = text.split()
+    #print(wordlist)
+    
+    first_word = wordlist[0]
+    second_word = wordlist[1]
+    
+    #runs a boolean check to determine if the first letter of each word are the same and returns True or False
+    return first_word[0] == second_word[0]
+
+#or use the below which first converts all the text in the function to lower case then splits them. then checks if the first letters are the same.
+    #wordlist = text.lower().split()
+    #print(wordlist)
+    #return wordlist[0][0] == wordlist[1][0]
+
+animal_crackers('Levelheaded Llama')
+
+True
+
+animal_crackers('Crazy Kangaroo')
+
+False
+
+#MAKES TWENTY: Given two integers, return True if the sum of the integers is 20 or if one of the integers is 20. If not, return False
+
+def makes_twenty(n1,n2):
+    if n1 + n2 == 20:
+        return True
+    elif n1 == 20:
+        return True
+    elif n2 == 20:
+        return True
+    else:
+        return False
+
+# more efficiently, can run
+    #return (n1+n2) == 20 or n1==20 or n2==20
+
+makes_twenty(20,10)
+
+True
+
+makes_twenty(2,3)
+
+False
+
+#OLD MACDONALD: Write a function that capitalizes the first and fourth letters of a name
+# old_macdonald('macdonald') --> MacDonald
+
+def old_macdonald(name):
+
+    #first_letter = name[0]
+    #inbetween = name[1:3]
+    #fourth_letter = name[3]
+    #rest = name[4:]
+    
+    #return first_letter + inbetween + fourth_letter + rest
+    #return first_letter.upper() + inbetween + fourth_letter.upper() + rest
+
+#alternative method using capatilise function
+
+    first_half = name[:3]
+    second_half = name[3:]
+    
+    return first_half.capitalize() + second_half.capitalize()
+
+old_macdonald('macdonald')
+
+'MacDonald'
+
+# MASTER YODA: Given a sentence, return a sentence with the words reversed 
+
+def master_yoda1(text):
+    words = text.split(' ') 
+  
+    # then reverse the split string list and join using space 
+    reverse_sentence = ' '.join(reversed(words)) 
+  
+    # finally return the joined string 
+    return reverse_sentence 
+
+master_yoda('I am home')
+
+['home', 'am', 'I']
+
+master_yoda('We are ready')
+
+['ready', 'are', 'We']
+
+# MASTER YODA: Given a sentence, return a sentence with the words reversed 
+
+def master_yoda2(text):
+    wordlist = text.split() 
+    reverse_word_list = wordlist[::-1]
+    return reverse_word_list
+
+master_yoda2('I am home')
+
+['home', 'am', 'I']
+
+master_yoda2('We are ready')
+
+['ready', 'are', 'We']
+
+#using Join method
+
+mylist = ['a' , 'b' , 'c']
+
+#' '.join(reversed(mylist))
+' 000000 '.join(mylist)
+
+'a 000000 b 000000 c'
+
+ 
+
+#ALMOST THERE: Given an integer n, return True if n is within 10 of either 100 or 200
+# new function being the abs(num) method
+def almost_there(n):
+    #abs(num)
+    return (abs(100-n) <= 10 or abs(100+n) <=10) or (abs(200-n) <= 10 or abs(200+n) <=10)
+
+almost_there(111)
+
+False
+
+almost_there(150)
+
+False
+
+almost_there(190)
+
+True
+
+#Given a list of ints, return True if the array contains a 3 next to a 3 somewhere.
+
+def has_33(nums):
+    
+    for i in range(0,len(nums)-1):
+        if nums[i] == 3 and nums[i+1] == 3:
+            return True
+    else:
+        return False
+
+has_33([1, 3, 3])
+
+True
+
+has_33([1, 3, 1, 3])
+
+False
+
+has_33([3, 1, 3])
+
+False
+
+#PAPER DOLL: Given a string, return a string where for every character in the original there are three characters 
+
+def paper_doll(text):
+    #string =  text.split() 
+    
+    result = ''
+    
+    for char in text:
+        result += char*3
+        #result += char+char+char
+    return result
+
+paper_doll('Hello')
+
+'HHHeeellllllooo'
+
+paper_doll('Mississippi')
+
+'MMMiiissssssiiissssssiiippppppiii'
+
+#BLACKJACK: Given three integers between 1 and 11, if their sum is less than or equal to 21, return their sum. 
+#If their sum exceeds 21 and there's an eleven, reduce the total sum by 10. 
+#Finally, if the sum (even after adjustment) exceeds 21, return 'BUST'
+
+def blackjack(a,b,c):
+    result = (a + b + c)
+    if result <= 21:
+        return result    
+    elif 11 in [a,b,c] and result <=31:
+        return result-10
+    else:
+        return 'BUST'   
+
+blackjack(5,6,7)
+
+18
+
+blackjack(9,9,9)
+
+'BUST'
+
+blackjack(9,9,11)
+
+19
+
+#SUMMER OF '69: Return the sum of the numbers in the array, except ignore sections of numbers starting with a 6 and 
+#extending to the next 9 (every 6 will be followed by at least one 9). Return 0 for no numbers.
+
+def summer_69(arr):
+    
+    total = 0
+    add = True
+    
+    for num in arr:
+        while add:
+            if num!= 6:
+                total += num
+                break
+            else:
+                add = False
+        while not add:
+            if num != 9:
+                break
+            else:
+                add = True
+                break
+    return total
+
+    
+
+summer_69([1, 3, 5])
+
+9
+
+summer_69([4, 5, 6, 7, 8, 9])
+
+9
+
+summer_69([2, 1, 6, 9, 11])
+
+14
+
+# SPY GAME: Write a function that takes in a list of integers and returns True if it contains 007 in order 
+
+def spy_game(nums):
+    
+    code = [0,0,7,'x']
+    #[0,7,'x']
+    #[7,'x']
+    #['x']
+    
+    
+    #the for loop runs through each number in the list, and verifies if the list has the numbers 0 0 7 in the code variable at the first position..
+    # when the for loop identifies the first number, it pops the number off and moves to the next number in the code variable until the last 'x'
+    # thus returning true when the 007 value is identified.
+    for num in nums:
+        if num == code[0]:
+            code.pop(0)
+    
+    return len(code) == 1
+    
+
+spy_game([1,2,4,0,0,7,5])
+
+True
+
+spy_game([1,0,2,4,0,5,7])
+
+True
+
+spy_game([1,7,2,0,4,5,0])
+
+False
+
+#COUNT PRIMES: Write a function that returns the number of prime numbers that exist up to and including a given number¶ 
+def count_primes(num):
+    
+    if num < 2:
+        return 0
+    ##################
+    # 2 or greater
+    
+    ##################
+    # Store our prime numbers
+    primes = [2]
+    
+    #counter going up to the input num
+    x = 3
+    
+    # x is going through ever number to input num
+    while x <= num:
+        #check if x is prime.. Starting from 3, and checking numbers by steps of 2. Which then skips even numbers
+        for y in range(3,x,2):
+            if x%y == 0:
+                x += 2
+                break
+        else:
+            primes.append(x)
+            x += 2
+    print(primes)
+    return len(primes)
+
+count_primes(100)
+
+[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]
+
+25
+
+#lambda expressions, maps, and Filter functions
+
+#MAP FUNCTION
+
+def square(num):
+    return num**2
+
+my_nums = [1,2,3,4,5]
+
+for items in map(square,my_nums):
+    print(items)
+
+1
+4
+9
+16
+25
+
+list(map(square,my_nums))
+
+[1, 4, 9, 16, 25]
+
+#returns names which are even, and odd names only return the first character
+
+def splicer(mystring):
+    if len(mystring)%2 == 0:
+        return 'EVEN'
+    else:
+        return mystring[0].lower()
+
+names = ['Andy' , 'John', 'Eve', 'Lucas']
+
+list(map(splicer,names))
+
+['EVEN', 'EVEN', 'e', 'l']
+
+#Filter Function
+
+def check_even(num):
+    return num %2 ==0
+
+mynums = [1,2,3,4,5,6,7]
+
+list(filter(check_even,mynums))
+
+[2, 4, 6]
+
+for n in filter(check_even,mynums):
+    print(n)
+
+2
+4
+6
+
+#lambda expressions
+
+def square(num):
+    result = num**2
+    return result
+
+square(3)
+
+9
+
+def square(num):
+    return num**2
+
+square(4)
+
+16
+
+#converting to lambda expression
+square = lambda num: num**2
+
+<function __main__.<lambda>(num)>
+
+square(5)
+
+25
+
+mynums = [1,2,3,4,5,6,7]
+
+#
+list(map(lambda num: num**2,mynums))
+
+[1, 4, 9, 16, 25, 36, 49]
+
+# converting check_even function to lambda expression
+#def check_even(num):
+#    return num %2 ==0
+
+lambda num: num %2 ==0
+
+<function __main__.<lambda>(num)>
+
+mynums = [1,2,3,4,5,6,7]
+
+list(filter(lambda num: num %2 ==0,mynums))
+
+[2, 4, 6]
+
+names
+
+['Andy', 'John', 'Eve', 'Lucas']
+
+#retriveing first character of the "names" list.. 
+list(map(lambda name: name[::-1],names))
+
+['ydnA', 'nhoJ', 'evE', 'sacuL']
+
+#nested statements and scope
+
+#LEGB Rule - local, encloding function local, Global (module) and Built-in (python)
+
+# Local example
+
+#lambda  num: num** 2
+#
+
+#
+
+#
+
+#
+
+#
+
+#
+
+#
+
+<function __main__.<lambda>(num)>
+
+#global variable
+x = 50
+
+def func(x):
+    #enclosing variable
+    x = 20
+    
+    #note if the hello_x
+    
+    def hello_x():
+        #local variable
+        x= 15
+        print(f'X is {x}')
+        
+    hello_x()
+
+func(x)
+
+X is 15
+
+#Functions and Methods Homework
+
+#Write a function that computes the volume of a sphere given its radius.
+
+def vol(rad):
+    return (4/3)*(3.14)*(rad**3)
+
+vol(2)
+
+33.49333333333333
+
+#Write a function that checks whether a number is in a given range (inclusive of high and low)
+def ran_check(num,low,high):
+    if num in range(low,high+1):
+        print(f'{num} is in range between {low} and {high}')
+    else:
+        print('not in range')
+
+#5 in range(0,4)
+5 in range(0,6)
+
+True
+
+ran_check(5,2,7)
+
+5 is in range between 2 and 7
+
+#If you only wanted to return a boolean:
+
+def ran_bool(num,low,high):
+        return num in range(low,high+1)
+
+ran_bool(3,1,10)
+
+True
+
+#Write a Python function that accepts a string and calculates the number of upper case letters and lower case letters.
+#Sample String : 'Hello Mr. Rogers, how are you this fine Tuesday?'
+#Expected Output : 
+#No. of Upper case characters : 4
+#No. of Lower case Characters : 33
+
+def up_low(s):
+    
+    lower=0
+    upper=0
+    
+    for words in s:
+        if (words.islower()):
+            lower=lower+1  
+    for words in s:
+        if (words.isupper()):
+            upper=upper+1
+    print(f'Original String : {s}')
+    print(f'No of upper case characters : {upper}')
+    print(f'No of upper case characters : {lower}')
+
+s = 'Hello Mr. Rogers, how are you this fine Tuesday?'
+up_low(s)
+
+Original String : Hello Mr. Rogers, how are you this fine Tuesday?
+No of upper case characters : 4
+No of upper case characters : 33
+
+#Write a Python function that takes a list and returns a new list with unique elements of the first list.
+# Sample List : [1,1,1,1,2,2,3,3,3,3,4,5]
+# unique List : [1, 2, 3, 4, 5]
+#
+def unique_list(lst):
+    
+    #quick method could be to use the "set" function like below:
+    #return list(set(lst))
+    #or
+    #return set(lst)
+    
+    #Alternative method
+    seen_numbers = []
+    
+    for number in lst:
+        if number not in seen_numbers:
+            seen_numbers.append(number)
+    return seen_numbers
+
+unique_list([1,1,1,1,2,2,3,3,3,3,4,5])
+
+[1, 2, 3, 4, 5]
+
+# Write a Python function to multiply all the numbers in a list.
+# Sample List : [1, 2, 3, -4]
+# Expected Output : -24
+
+def multiply(numbers): 
+    total = 1
+    
+    for num in numbers:
+        total = total * num
+    return total
+
+multiply([1,2,3,-4,10])
+
+-240
+
+# Write a Python function that checks whether a word or phrase is palindrome or not.
+
+#Note: A palindrome is word, phrase, or sequence that reads the same backward as forward, e.g., madam,kayak,racecar, 
+# or a phrase "nurses run". Hint: You may want to check out the .replace() method in a string to help out with dealing with spaces. 
+#Also google search how to reverse a string in Python, there are some clever ways to do it with slicing notation.
+
+def palindrome(s):
+    #remove spaces in a string uses replace() method
+    s = s.replace(" ", "")
+
+    # check if string is == reversed versions of the string
+    return s == s[::-1]
+    
+
+palindrome('helle h')
+
+False
+
+# Write a Python function to check whether a string is pangram or not. (Assume the string passed in does not have any punctuation)
+# Note : Pangrams are words or sentences containing every letter of the alphabet at least once.
+#For example : "The quick brown fox jumps over the lazy dog"
+
+#Hint: You may want to use .replace() method to get rid of spaces.
+
+#Hint: Look at the string module
+
+#Hint: In case you want to use set comparisons
+
+import string
+
+def ispangram(str1, alphabet=string.ascii_lowercase):
+    # create a set of the entire alphabet which is "alphabet=string.ascii_lowercase"
+    alphaset = set(alphabet)
+    
+    print(alphaset)
+    
+    # remove any spaces from the input string
+    str1 = str1.replace(" ", "")
+    
+    #print(str1)
+
+    #convert input string into all lowercase
+    str1 = str1.lower()
+    
+    #print(str1)
+    
+    #grab all unique letters from the string in the set()
+    
+    str1 = set(str1)
+    #print(str1)
+
+    # alphabet set == string set from input
+    
+    return alphaset == str1
+
+ispangram("The quick brown fox jumps over the lazy dog")
+
+{'z', 's', 'w', 'j', 'a', 'q', 'p', 'y', 't', 'm', 'i', 'l', 'g', 'h', 'n', 'o', 'k', 'f', 'b', 'v', 'e', 'c', 'u', 'x', 'r', 'd'}
+
+True
+
+string.ascii_lowercase
+
+'abcdefghijklmnopqrstuvwxyz'

@@ -1,0 +1,424 @@
+# Python Generators
+
+list(range(1,20,3))
+
+[1, 4, 7, 10, 13, 16, 19]
+
+def create_cubes(n):
+
+    
+
+    result = []
+
+    
+
+    for x in range(n):
+
+        result.append(x**3)
+
+    return result
+
+create_cubes(10)
+
+[0, 1, 8, 27, 64, 125, 216, 343, 512, 729]
+
+for x in create_cubes(10):
+
+    print(x)
+
+0
+1
+8
+27
+64
+125
+216
+343
+512
+729
+
+#using the yeild keyword
+
+def create_cubes(n):    
+
+    for x in range(n):
+
+        yield x**3
+
+create_cubes(10)
+
+<generator object create_cubes at 0x7f18ebf7e890>
+
+for x in create_cubes(10):
+
+    print(x)
+
+0
+1
+8
+27
+64
+125
+216
+343
+512
+729
+
+tuple(create_cubes(10))
+
+(0, 1, 8, 27, 64, 125, 216, 343, 512, 729)
+
+list(create_cubes(10))
+
+[0, 1, 8, 27, 64, 125, 216, 343, 512, 729]
+
+#Far more memory efficient than traditional append method below:
+
+def gen_fidon(n):    
+
+    a = 1
+
+    b = 1
+
+    
+
+    for i in range(n):
+
+        yield a
+
+        a,b = b,a+b
+
+for number in gen_fidon(20):
+
+    print(number)
+
+1
+1
+2
+3
+5
+8
+13
+21
+34
+55
+89
+144
+233
+377
+610
+987
+1597
+2584
+4181
+6765
+
+def gen_fidon2(n):    
+
+    a = 1
+
+    b = 1
+
+    
+
+    output = []
+
+    
+
+    for i in range(n):
+
+        output.append(a)
+
+        a,b = b,a+b
+
+    return output
+
+for number in gen_fidon2(20):
+
+    print(number)
+
+1
+1
+2
+3
+5
+8
+13
+21
+34
+55
+89
+144
+233
+377
+610
+987
+1597
+2584
+4181
+6765
+
+def simple_gen():
+
+    for x in range(3):
+
+        yield x
+
+    
+
+for number in simple_gen():
+
+    print(number)
+
+0
+1
+2
+
+g = simple_gen()
+
+g
+
+<generator object simple_gen at 0x7f18ebe947b0>
+
+# using the 'next' attribute call/output one value at a time
+
+print(next(g))
+
+0
+
+print(next(g))
+
+1
+
+print(next(g))
+
+2
+
+print(next(g))
+
+---------------------------------------------------------------------------
+StopIteration                             Traceback (most recent call last)
+<ipython-input-104-1dfb29d6357e> in <module>
+----> 1 print(next(g))
+
+StopIteration: 
+
+s = "hello"
+
+for letters in s:
+
+    print(letters)
+
+h
+e
+l
+l
+o
+
+next(s)
+
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+<ipython-input-109-61c30b5fe1d5> in <module>
+----> 1 next(s)
+
+TypeError: 'str' object is not an iterator
+
+iter(s)
+
+<str_iterator at 0x7f18fc063040>
+
+#can call each letter one by one using the 'iter' attribute
+
+s_iter = iter(s)
+
+next(s_iter)
+
+'h'
+
+next(s_iter)
+
+'e'
+
+next(s_iter)
+
+'l'
+
+next(s_iter)
+
+'l'
+
+next(s_iter)
+
+'o'
+
+next(s_iter)
+
+---------------------------------------------------------------------------
+StopIteration                             Traceback (most recent call last)
+<ipython-input-118-9c75d6e5ae59> in <module>
+----> 1 next(s_iter)
+
+StopIteration: 
+
+#Iterators and Generators Homework
+
+#Problem 1
+
+​
+
+#Create a generator that generates the squares of numbers up to some number N.
+
+​
+
+def gensquares(N):
+
+​
+
+    for x in range(N):
+
+        yield x**2
+
+​
+
+for x in gensquares(10):
+
+    print(x)
+
+​
+
+​
+
+0
+1
+4
+9
+16
+25
+36
+49
+64
+81
+
+#Create a generator that yields "n" random numbers between a low and high number (that are inputs).
+
+#Note: Use the random library. For example:
+
+​
+
+import random
+
+​
+
+random.randint(1,10)
+
+​
+
+​
+
+9
+
+def rand_num(low,high,n):
+
+​
+
+    for n in range(n):
+
+        yield random.randint(low,high)
+
+​
+
+for num in rand_num(1,10,12):
+
+    print(num)
+
+5
+2
+3
+7
+9
+8
+4
+4
+8
+7
+2
+6
+
+#
+
+#Problem 3
+
+​
+
+#Use the iter() function to convert the string below into an iterator:
+
+#In [ ]:
+
+​
+
+s = 'hello'
+
+​
+
+for letters in s:
+
+    print(letters)
+
+​
+
+h
+e
+l
+l
+o
+
+s_iter = iter(s)
+
+​
+
+next(s_iter)
+
+'h'
+
+next(s_iter)
+
+'e'
+
+next(s_iter)
+
+'l'
+
+next(s_iter)
+
+'l'
+
+next(s_iter)
+
+'o'
+
+#Extra Credit!
+
+​
+
+#Can you explain what gencomp is in the code below? (Note: We never covered this in lecture! You will have to do some Googling/Stack Overflowing!)
+
+#
+
+my_list = [1,2,3,4,5]
+
+​
+
+gencomp = (item for item in my_list if item > 3)
+
+​
+
+for item in gencomp:
+
+    print(item)
+
+4
+5
+
+#https://www.pythonforbeginners.com/basics/generator-comprehension-in-python#htoc-what-is-generator-comprehension
+

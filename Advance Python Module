@@ -1,0 +1,1781 @@
+
+
+# Advance Python Modules
+
+ 
+
+#Python Collection Module
+
+from collections import Counter
+
+mylist = [1,1,1,1,1,1,2,2,2,2,2,2,3,3,3,3,3,3,4,5,5,5,5,5]
+
+Counter(mylist)
+
+Counter({1: 6, 2: 6, 3: 6, 4: 1, 5: 5})
+
+mylist2 = ['a','a','a',10,10,10]
+
+Counter(mylist2)
+
+Counter({'a': 3, 10: 3})
+
+Counter("AAAABBBBBCCCCDDDDDDD")
+
+Counter({'A': 4, 'B': 5, 'C': 4, 'D': 7})
+
+sentence = "How many times does each each word show up in this sentence with a word with"
+
+sentence.split()
+
+['How',
+ 'many',
+ 'times',
+ 'does',
+ 'each',
+ 'each',
+ 'word',
+ 'show',
+ 'up',
+ 'in',
+ 'this',
+ 'sentence',
+ 'with',
+ 'a',
+ 'word',
+ 'with']
+
+Counter(sentence.split())
+
+Counter({'How': 1,
+         'many': 1,
+         'times': 1,
+         'does': 1,
+         'each': 2,
+         'word': 2,
+         'show': 1,
+         'up': 1,
+         'in': 1,
+         'this': 1,
+         'sentence': 1,
+         'with': 2,
+         'a': 1})
+
+Counter(sentence.lower().split())
+
+Counter({'how': 1,
+         'many': 1,
+         'times': 1,
+         'does': 1,
+         'each': 2,
+         'word': 2,
+         'show': 1,
+         'up': 1,
+         'in': 1,
+         'this': 1,
+         'sentence': 1,
+         'with': 2,
+         'a': 1})
+
+letters = 'aaaabbbbbccccddddddd'
+
+c = Counter(letters)
+
+c
+
+Counter({'a': 4, 'b': 5, 'c': 4, 'd': 7})
+
+c.most_common(2)
+
+[('d', 7), ('b', 5)]
+
+list(c)
+
+['a', 'b', 'c', 'd']
+
+ 
+
+from collections import defaultdict
+
+d = {'a':10}
+
+d
+
+{'a': 10}
+
+d['a']
+
+10
+
+d['WRONG']
+
+---------------------------------------------------------------------------
+KeyError                                  Traceback (most recent call last)
+/tmp/wsuser/ipykernel_154/1483143541.py in <module>
+----> 1 d['WRONG']
+
+KeyError: 'WRONG'
+
+d = defaultdict(lambda: 0)
+
+d['correct'] = 100
+
+d['correct']
+
+100
+
+d['WRONG KEY']
+
+0
+
+d
+
+defaultdict(<function __main__.<lambda>()>, {'correct': 100, 'WRONG KEY': 0})
+
+mytuple = (10, 20, 30)
+
+mytuple[0]
+
+10
+
+from collections import namedtuple
+
+Dog = namedtuple('Dog',['age','breed','name'])
+
+sammy = Dog(age=4,breed='Husky', name='Sam')
+
+type(sammy)
+
+__main__.Dog
+
+sammy
+
+Dog(age=4, breed='Husky', name='Sam')
+
+sammy.age
+
+4
+
+sammy.breed
+
+'Husky'
+
+sammy.name
+
+'Sam'
+
+sammy[0]
+
+4
+
+sammy[1]
+
+'Husky'
+
+ 
+
+# Opening and reading files and folders
+
+ 
+
+pwd
+
+'/home/wsuser/work'
+
+f = open('practise.txt', 'w+')
+f.write('This is a test string')
+f.close()
+
+ls -la
+
+total 20
+drwxr-x--- 3 wsuser wscommon 4096 Nov 24 02:39 ./
+drwxrwx--- 1 wsuser wscommon 4096 Nov 24 01:56 ../
+-rw-rw---- 1 wsuser wscommon   21 Nov 24 02:39 practise.txt
+drwxr-x--- 2 wsuser wscommon 4096 Nov 24 01:55 .virtual_documents/
+
+import os
+
+ls -la
+
+total 20
+drwxr-x--- 3 wsuser wscommon 4096 Nov 24 02:39 ./
+drwxrwx--- 1 wsuser wscommon 4096 Nov 24 01:56 ../
+-rw-rw---- 1 wsuser wscommon   21 Nov 24 02:39 practise.txt
+drwxr-x--- 2 wsuser wscommon 4096 Nov 24 01:55 .virtual_documents/
+
+#print out current working directory
+os.getcwd()
+
+'/home/wsuser/work'
+
+os.listdir()
+
+['practise.txt', '.virtual_documents']
+
+os.listdir('/home/wsuser/')
+
+['.bash_profile',
+ '.bash_logout',
+ '.bashrc',
+ '.cache',
+ 'work',
+ '.ipython',
+ '.local',
+ 'jars']
+
+import shutil
+
+#move command
+#shutil.move('SOURCE', 'DESTINATION')
+
+#https://github.com/Pierian-Data/Complete-Python-3-Bootcamp/blob/master/12-Advanced%20Python%20Modules/01-Opening-and-Reading-Files-Folders.ipynb
+
+#Deleting Files
+
+#NOTE: The os module provides 3 methods for deleting files:
+
+#    os.unlink(path) which deletes a file at the path your provide
+#    os.rmdir(path) which deletes a folder (folder must be empty) at the path your provide
+#    shutil.rmtree(path) this is the most dangerous, as it will remove all files and folders contained in the path.    
+#    All of these methods can not be reversed! Which means if you make a mistake you won't be able to recover the file. 
+#    Instead we will use the send2trash module. A safer alternative that sends deleted files to the trash bin instead of permanent removal.
+
+#moving a file to trash with the send2trash function
+import send2trash
+
+os.listdir()
+
+['practise.txt', '.virtual_documents']
+
+send2trash.send2trash('practise.txt')
+
+os.walk
+
+<function os.walk(top, topdown=True, onerror=None, followlinks=False)>
+
+for folder, sub_folders,files in os.walk('/home/wsuser/'):
+    
+    print(f"currently looking at {folder}")
+    print('\n')
+    print('The Sub Folders are: ')
+    for sub_fold in sub_folders:
+        print(f"Subfolder: {sub_fold}")
+        
+    print('\n')
+    print('The Files are: ')  
+    for f in files:
+        print(f"\t Files: {f}")
+    print('\n')
+
+currently looking at /home/wsuser/
+
+
+The Sub Folders are: 
+Subfolder: .cache
+Subfolder: work
+Subfolder: .ipython
+Subfolder: .local
+Subfolder: jars
+
+
+The Files are: 
+	 Files: .bash_profile
+	 Files: .bash_logout
+	 Files: .bashrc
+
+
+currently looking at /home/wsuser/work
+
+
+The Sub Folders are: 
+Subfolder: .virtual_documents
+
+
+The Files are: 
+
+
+currently looking at /home/wsuser/work/.virtual_documents
+
+
+The Sub Folders are: 
+
+
+The Files are: 
+
+
+currently looking at /home/wsuser/.ipython
+
+
+The Sub Folders are: 
+Subfolder: profile_default
+Subfolder: extensions
+Subfolder: nbextensions
+
+
+The Files are: 
+
+
+currently looking at /home/wsuser/.ipython/profile_default
+
+
+The Sub Folders are: 
+Subfolder: pid
+Subfolder: startup
+Subfolder: log
+Subfolder: db
+Subfolder: security
+
+
+The Files are: 
+	 Files: history.sqlite
+	 Files: history.sqlite-journal
+
+
+currently looking at /home/wsuser/.ipython/profile_default/pid
+
+
+The Sub Folders are: 
+
+
+The Files are: 
+
+
+currently looking at /home/wsuser/.ipython/profile_default/startup
+
+
+The Sub Folders are: 
+
+
+The Files are: 
+	 Files: README
+
+
+currently looking at /home/wsuser/.ipython/profile_default/log
+
+
+The Sub Folders are: 
+
+
+The Files are: 
+
+
+currently looking at /home/wsuser/.ipython/profile_default/db
+
+
+The Sub Folders are: 
+
+
+The Files are: 
+
+
+currently looking at /home/wsuser/.ipython/profile_default/security
+
+
+The Sub Folders are: 
+
+
+The Files are: 
+
+
+currently looking at /home/wsuser/.ipython/extensions
+
+
+The Sub Folders are: 
+
+
+The Files are: 
+
+
+currently looking at /home/wsuser/.ipython/nbextensions
+
+
+The Sub Folders are: 
+
+
+The Files are: 
+
+
+currently looking at /home/wsuser/.local
+
+
+The Sub Folders are: 
+Subfolder: share
+Subfolder: lib
+
+
+The Files are: 
+
+
+currently looking at /home/wsuser/.local/share
+
+
+The Sub Folders are: 
+Subfolder: Trash
+
+
+The Files are: 
+
+
+currently looking at /home/wsuser/.local/share/Trash
+
+
+The Sub Folders are: 
+Subfolder: info
+Subfolder: files
+
+
+The Files are: 
+
+
+currently looking at /home/wsuser/.local/share/Trash/info
+
+
+The Sub Folders are: 
+
+
+The Files are: 
+	 Files: practise.txt.trashinfo
+
+
+currently looking at /home/wsuser/.local/share/Trash/files
+
+
+The Sub Folders are: 
+
+
+The Files are: 
+	 Files: practise.txt
+
+
+currently looking at /home/wsuser/.local/lib
+
+
+The Sub Folders are: 
+Subfolder: python3.8
+
+
+The Files are: 
+
+
+currently looking at /home/wsuser/.local/lib/python3.8
+
+
+The Sub Folders are: 
+Subfolder: site-packages
+
+
+The Files are: 
+
+
+currently looking at /home/wsuser/.local/lib/python3.8/site-packages
+
+
+The Sub Folders are: 
+
+
+The Files are: 
+
+
+currently looking at /home/wsuser/jars
+
+
+The Sub Folders are: 
+
+
+The Files are: 
+
+
+#DateTime Module
+
+ 
+
+import datetime 
+
+mytime = datetime.time(13,20,1,20)
+
+mytime.minute
+
+20
+
+mytime.hour
+
+13
+
+print(mytime)
+
+13:20:01.000020
+
+mytime.microsecond
+
+20
+
+type(mytime)
+
+datetime.time
+
+today = datetime.date.today()
+
+today
+
+datetime.date(2021, 11, 24)
+
+print(today)
+
+2021-11-24
+
+today.year
+
+2021
+
+today.month
+
+11
+
+today.day
+
+24
+
+today.ctime()
+
+'Wed Nov 24 00:00:00 2021'
+
+from datetime import datetime
+
+mydatetime = datetime(2021,11,3,14,20,1)
+
+print(mydatetime)
+
+2021-11-03 14:20:01
+
+mydatetime = mydatetime.replace(year=2020)
+
+print(mydatetime)
+
+2020-11-03 14:20:01
+
+#date information
+
+from datetime import date
+
+date1 = date(2026,11,1)
+date2 = date(2020,11,1)
+
+date1 - date2
+
+datetime.timedelta(days=2191)
+
+result = date1 - date2
+
+print(f"the difference between {result} days")
+
+the difference between 2191 days, 0:00:00 days
+
+type(result)
+
+datetime.timedelta
+
+from datetime import datetime
+
+datetime1 = datetime(2026,11,1,6,38)
+datetime2 = datetime(2020,11,1,20,4)
+
+datetime1 - datetime2
+
+datetime.timedelta(days=2190, seconds=38040)
+
+result2 = datetime1 - datetime2
+
+print(result2)
+
+2190 days, 10:34:00
+
+result2.seconds
+
+38040
+
+result2.total_seconds()
+
+189254040.0
+
+result2.min
+
+datetime.timedelta(days=-999999999)
+
+#
+
+#Python Math and Random Modules
+
+import math
+
+help(math)
+
+Help on module math:
+
+NAME
+    math
+
+MODULE REFERENCE
+    https://docs.python.org/3.8/library/math
+    
+    The following documentation is automatically generated from the Python
+    source files.  It may be incomplete, incorrect or include features that
+    are considered implementation detail and may vary between Python
+    implementations.  When in doubt, consult the module reference at the
+    location listed above.
+
+DESCRIPTION
+    This module provides access to the mathematical functions
+    defined by the C standard.
+
+FUNCTIONS
+    acos(x, /)
+        Return the arc cosine (measured in radians) of x.
+    
+    acosh(x, /)
+        Return the inverse hyperbolic cosine of x.
+    
+    asin(x, /)
+        Return the arc sine (measured in radians) of x.
+    
+    asinh(x, /)
+        Return the inverse hyperbolic sine of x.
+    
+    atan(x, /)
+        Return the arc tangent (measured in radians) of x.
+    
+    atan2(y, x, /)
+        Return the arc tangent (measured in radians) of y/x.
+        
+        Unlike atan(y/x), the signs of both x and y are considered.
+    
+    atanh(x, /)
+        Return the inverse hyperbolic tangent of x.
+    
+    ceil(x, /)
+        Return the ceiling of x as an Integral.
+        
+        This is the smallest integer >= x.
+    
+    comb(n, k, /)
+        Number of ways to choose k items from n items without repetition and without order.
+        
+        Evaluates to n! / (k! * (n - k)!) when k <= n and evaluates
+        to zero when k > n.
+        
+        Also called the binomial coefficient because it is equivalent
+        to the coefficient of k-th term in polynomial expansion of the
+        expression (1 + x)**n.
+        
+        Raises TypeError if either of the arguments are not integers.
+        Raises ValueError if either of the arguments are negative.
+    
+    copysign(x, y, /)
+        Return a float with the magnitude (absolute value) of x but the sign of y.
+        
+        On platforms that support signed zeros, copysign(1.0, -0.0)
+        returns -1.0.
+    
+    cos(x, /)
+        Return the cosine of x (measured in radians).
+    
+    cosh(x, /)
+        Return the hyperbolic cosine of x.
+    
+    degrees(x, /)
+        Convert angle x from radians to degrees.
+    
+    dist(p, q, /)
+        Return the Euclidean distance between two points p and q.
+        
+        The points should be specified as sequences (or iterables) of
+        coordinates.  Both inputs must have the same dimension.
+        
+        Roughly equivalent to:
+            sqrt(sum((px - qx) ** 2.0 for px, qx in zip(p, q)))
+    
+    erf(x, /)
+        Error function at x.
+    
+    erfc(x, /)
+        Complementary error function at x.
+    
+    exp(x, /)
+        Return e raised to the power of x.
+    
+    expm1(x, /)
+        Return exp(x)-1.
+        
+        This function avoids the loss of precision involved in the direct evaluation of exp(x)-1 for small x.
+    
+    fabs(x, /)
+        Return the absolute value of the float x.
+    
+    factorial(x, /)
+        Find x!.
+        
+        Raise a ValueError if x is negative or non-integral.
+    
+    floor(x, /)
+        Return the floor of x as an Integral.
+        
+        This is the largest integer <= x.
+    
+    fmod(x, y, /)
+        Return fmod(x, y), according to platform C.
+        
+        x % y may differ.
+    
+    frexp(x, /)
+        Return the mantissa and exponent of x, as pair (m, e).
+        
+        m is a float and e is an int, such that x = m * 2.**e.
+        If x is 0, m and e are both 0.  Else 0.5 <= abs(m) < 1.0.
+    
+    fsum(seq, /)
+        Return an accurate floating point sum of values in the iterable seq.
+        
+        Assumes IEEE-754 floating point arithmetic.
+    
+    gamma(x, /)
+        Gamma function at x.
+    
+    gcd(x, y, /)
+        greatest common divisor of x and y
+    
+    hypot(...)
+        hypot(*coordinates) -> value
+        
+        Multidimensional Euclidean distance from the origin to a point.
+        
+        Roughly equivalent to:
+            sqrt(sum(x**2 for x in coordinates))
+        
+        For a two dimensional point (x, y), gives the hypotenuse
+        using the Pythagorean theorem:  sqrt(x*x + y*y).
+        
+        For example, the hypotenuse of a 3/4/5 right triangle is:
+        
+            >>> hypot(3.0, 4.0)
+            5.0
+    
+    isclose(a, b, *, rel_tol=1e-09, abs_tol=0.0)
+        Determine whether two floating point numbers are close in value.
+        
+          rel_tol
+            maximum difference for being considered "close", relative to the
+            magnitude of the input values
+          abs_tol
+            maximum difference for being considered "close", regardless of the
+            magnitude of the input values
+        
+        Return True if a is close in value to b, and False otherwise.
+        
+        For the values to be considered close, the difference between them
+        must be smaller than at least one of the tolerances.
+        
+        -inf, inf and NaN behave similarly to the IEEE 754 Standard.  That
+        is, NaN is not close to anything, even itself.  inf and -inf are
+        only close to themselves.
+    
+    isfinite(x, /)
+        Return True if x is neither an infinity nor a NaN, and False otherwise.
+    
+    isinf(x, /)
+        Return True if x is a positive or negative infinity, and False otherwise.
+    
+    isnan(x, /)
+        Return True if x is a NaN (not a number), and False otherwise.
+    
+    isqrt(n, /)
+        Return the integer part of the square root of the input.
+    
+    ldexp(x, i, /)
+        Return x * (2**i).
+        
+        This is essentially the inverse of frexp().
+    
+    lgamma(x, /)
+        Natural logarithm of absolute value of Gamma function at x.
+    
+    log(...)
+        log(x, [base=math.e])
+        Return the logarithm of x to the given base.
+        
+        If the base not specified, returns the natural logarithm (base e) of x.
+    
+    log10(x, /)
+        Return the base 10 logarithm of x.
+    
+    log1p(x, /)
+        Return the natural logarithm of 1+x (base e).
+        
+        The result is computed in a way which is accurate for x near zero.
+    
+    log2(x, /)
+        Return the base 2 logarithm of x.
+    
+    modf(x, /)
+        Return the fractional and integer parts of x.
+        
+        Both results carry the sign of x and are floats.
+    
+    perm(n, k=None, /)
+        Number of ways to choose k items from n items without repetition and with order.
+        
+        Evaluates to n! / (n - k)! when k <= n and evaluates
+        to zero when k > n.
+        
+        If k is not specified or is None, then k defaults to n
+        and the function returns n!.
+        
+        Raises TypeError if either of the arguments are not integers.
+        Raises ValueError if either of the arguments are negative.
+    
+    pow(x, y, /)
+        Return x**y (x to the power of y).
+    
+    prod(iterable, /, *, start=1)
+        Calculate the product of all the elements in the input iterable.
+        
+        The default start value for the product is 1.
+        
+        When the iterable is empty, return the start value.  This function is
+        intended specifically for use with numeric values and may reject
+        non-numeric types.
+    
+    radians(x, /)
+        Convert angle x from degrees to radians.
+    
+    remainder(x, y, /)
+        Difference between x and the closest integer multiple of y.
+        
+        Return x - n*y where n*y is the closest integer multiple of y.
+        In the case where x is exactly halfway between two multiples of
+        y, the nearest even value of n is used. The result is always exact.
+    
+    sin(x, /)
+        Return the sine of x (measured in radians).
+    
+    sinh(x, /)
+        Return the hyperbolic sine of x.
+    
+    sqrt(x, /)
+        Return the square root of x.
+    
+    tan(x, /)
+        Return the tangent of x (measured in radians).
+    
+    tanh(x, /)
+        Return the hyperbolic tangent of x.
+    
+    trunc(x, /)
+        Truncates the Real x to the nearest Integral toward 0.
+        
+        Uses the __trunc__ magic method.
+
+DATA
+    e = 2.718281828459045
+    inf = inf
+    nan = nan
+    pi = 3.141592653589793
+    tau = 6.283185307179586
+
+FILE
+    /opt/conda/envs/Python-3.8-main/lib/python3.8/lib-dynload/math.cpython-38-x86_64-linux-gnu.so
+
+
+value = 4.35
+
+math.floor(value)
+
+4
+
+math.ceil(value)
+
+5
+
+round(4.35)
+
+4
+
+round(4.5)
+
+4
+
+round(5.5)
+
+6
+
+math.pi
+
+3.141592653589793
+
+from math import pi
+
+pi
+
+3.141592653589793
+
+math.e
+
+2.718281828459045
+
+math.inf
+
+inf
+
+math.nan
+
+nan
+
+math.e
+
+2.718281828459045
+
+math.log(math.e)
+
+1.0
+
+math.log(100,10)
+
+2.0
+
+math.sin(10)
+
+-0.5440211108893698
+
+math.degrees(pi/2)
+
+90.0
+
+math.radians(100)
+
+1.7453292519943295
+
+#Random Module
+
+import random
+
+random.randint(0,100)
+
+88
+
+random.seed(101)
+
+random.randint(0,100)
+
+74
+
+random.randint(0,100)
+
+24
+
+random.randint(0,100)
+
+69
+
+mylist = list(range(0,20))
+
+mylist
+
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+
+random.choice(mylist)
+
+11
+
+mylist
+
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+
+#sample with replacement
+random.choices(population=mylist, k=10)
+
+[9, 13, 4, 4, 5, 13, 4, 19, 1, 3]
+
+#sample without replacement
+random.sample(population=mylist, k=10)
+
+[2, 14, 17, 11, 6, 7, 12, 5, 3, 10]
+
+mylist
+
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+
+random.shuffle(mylist)
+
+mylist
+
+[16, 14, 0, 8, 11, 17, 19, 15, 5, 9, 10, 1, 3, 4, 7, 18, 2, 6, 13, 12]
+
+random.uniform(a=0, b=10)
+
+7.444690143237648
+
+random.gauss(mu=0, sigma=1)
+
+-1.7665992795896235
+
+#Python Debugger
+
+x = [1,2,3]
+y = 2
+z = 3
+
+result = y + z
+result = x + y
+
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+/tmp/wsuser/ipykernel_154/1980246280.py in <module>
+      4 
+      5 result = y + z
+----> 6 result = x + y
+
+TypeError: can only concatenate list (not "int") to list
+
+#debugging module
+import pdb
+
+x = [1,2,3]
+y = 2
+z = 3
+
+result_one = y + z
+
+pdb.set_trace()
+
+result_two = y + x
+
+--Return--
+None
+> /tmp/wsuser/ipykernel_154/1912475531.py(7)<module>()
+      5 result_one = y + z
+      6 
+----> 7 pdb.set_trace()
+      8 
+      9 result_two = y + x
+
+ipdb> 
+ipdb> quit
+
+---------------------------------------------------------------------------
+BdbQuit                                   Traceback (most recent call last)
+/tmp/wsuser/ipykernel_154/1912475531.py in <module>
+      5 result_one = y + z
+      6 
+----> 7 pdb.set_trace()
+      8 
+      9 result_two = y + x
+
+/opt/conda/envs/Python-3.8-main/lib/python3.8/bdb.py in trace_dispatch(self, frame, event, arg)
+     90             return self.dispatch_call(frame, arg)
+     91         if event == 'return':
+---> 92             return self.dispatch_return(frame, arg)
+     93         if event == 'exception':
+     94             return self.dispatch_exception(frame, arg)
+
+/opt/conda/envs/Python-3.8-main/lib/python3.8/bdb.py in dispatch_return(self, frame, arg)
+    152             finally:
+    153                 self.frame_returning = None
+--> 154             if self.quitting: raise BdbQuit
+    155             # The user issued a 'next' or 'until' command.
+    156             if self.stopframe is frame and self.stoplineno != -1:
+
+BdbQuit: 
+
+#Python Regular expressions
+
+text = " the agents phone number is 404-4040-1234. call soon!"
+
+'phone' in text
+
+True
+
+import re
+
+pattern = 'phone'
+
+re.search(pattern,text)
+
+<re.Match object; span=(12, 17), match='phone'>
+
+pattern = 'Not in text'
+
+re.search(pattern,text)
+
+pattern = 'phone'
+
+match = re.search(pattern,text)
+
+match.span()
+
+(12, 17)
+
+match.end()
+
+17
+
+match.start()
+
+12
+
+text = 'My phone once, my phone twice'
+
+match = re.search('phone',text)
+
+match
+
+<re.Match object; span=(3, 8), match='phone'>
+
+matches = re.findall('phone',text)
+
+matches
+
+['phone', 'phone']
+
+len(matches)
+
+2
+
+for match in re.finditer('phone',text):
+    print(match)
+
+<re.Match object; span=(3, 8), match='phone'>
+<re.Match object; span=(18, 23), match='phone'>
+
+for match in re.finditer('phone',text):
+    print(match.span())
+
+(3, 8)
+(18, 23)
+
+for match in re.finditer('phone',text):
+    print(match.group())
+
+phone
+phone
+
+blue = 'Hello, my name is shadi My phone once, my phone twice shadi is trying out'
+
+match = re.findall('shadi',blue)
+
+match
+
+['shadi', 'shadi']
+
+len(match)
+
+2
+
+for match in re.finditer('shadi',blue):
+    print(match)
+
+<re.Match object; span=(18, 23), match='shadi'>
+<re.Match object; span=(54, 59), match='shadi'>
+
+for match in re.finditer('shadi',blue):
+    print(match.group())
+
+shadi
+shadi
+
+for match in re.finditer('shadi',blue):
+    print(match)
+
+<re.Match object; span=(18, 23), match='shadi'>
+<re.Match object; span=(54, 59), match='shadi'>
+
+ 
+
+text = "my phone number is 0414-543-777"
+
+phone = re.search('0414-543-296', text)
+
+phone
+
+phone = re.search(r'\d\d\d\d-\d\d\d-\d\d\d', text)
+
+phone
+
+<re.Match object; span=(19, 31), match='0414-543-777'>
+
+phone.group()
+
+'0414-543-777'
+
+phone = re.search(r'\d{4}-\d{3}-\d{3}', text)
+
+phone
+
+<re.Match object; span=(19, 31), match='0414-543-777'>
+
+phone_pattern = re.compile(r'(\d{4})-(\d{3})-(\d{3})')
+
+results = re.search(phone_pattern,text)
+
+results.group()
+
+'0414-543-777'
+
+results.group()
+
+'0414-543-777'
+
+results.group(1)
+
+'0414'
+
+results.group(2)
+
+'543'
+
+results.group(3)
+
+'777'
+
+re.search(r'cat','the cat is here')
+
+<re.Match object; span=(4, 7), match='cat'>
+
+#pipe operator is an OR operator within regex
+re.search(r'cat|dog','the dog is here')
+
+<re.Match object; span=(4, 7), match='dog'>
+
+#wildcare operator is the '.'
+re.findall(r'at','The cat in the hat sat there')
+
+['at', 'at', 'at']
+
+re.findall(r'.at','The cat in the hat sat there and went splat')
+
+['cat', 'hat', 'sat', 'lat']
+
+#can expand the wildcare character with multiple '.'
+re.findall(r'...at','The cat in the hat sat there and went splat')
+
+['e cat', 'e hat', 'splat']
+
+#starts with is '^'.
+# the below example is looking for a sentence which starts with a number
+re.findall(r'^\d','1 is a number')
+
+['1']
+
+re.findall(r'^\d','this 1 is a number')
+
+[]
+
+#ends with is "$"
+# the below example is looking for a sentence which ends with a number
+
+re.findall(r'\d$','1 is a number 4')
+
+['4']
+
+#exclusion genrex
+
+phrase = 'there are 3 numbers 34 inside 5 this sentence'
+
+# to exclude digits with '[^\d]'
+pattern = r'[^\d]'
+
+re.findall(pattern,phrase)
+
+['t',
+ 'h',
+ 'e',
+ 'r',
+ 'e',
+ ' ',
+ 'a',
+ 'r',
+ 'e',
+ ' ',
+ ' ',
+ 'n',
+ 'u',
+ 'm',
+ 'b',
+ 'e',
+ 'r',
+ 's',
+ ' ',
+ ' ',
+ 'i',
+ 'n',
+ 's',
+ 'i',
+ 'd',
+ 'e',
+ ' ',
+ ' ',
+ 't',
+ 'h',
+ 'i',
+ 's',
+ ' ',
+ 's',
+ 'e',
+ 'n',
+ 't',
+ 'e',
+ 'n',
+ 'c',
+ 'e']
+
+#unlike the above pattern, the '+' at the end of the regex joins all the works together. Whilst leaving out the numbers in the string
+pattern2 = r'[^\d]+'
+
+re.findall(pattern2,phrase)
+
+['there are ', ' numbers ', ' inside ', ' this sentence']
+
+test_phrase = 'This is a string!!, but it has punctuation. How can we remove it?'
+
+#excluding certain characters/punctuation from the string
+re.findall(r'[^!.?]+',test_phrase)
+
+['This is a string', ', but it has punctuation', ' How can we remove it']
+
+re.findall(r'[^!.? ]+',test_phrase)
+
+['This',
+ 'is',
+ 'a',
+ 'string',
+ ',',
+ 'but',
+ 'it',
+ 'has',
+ 'punctuation',
+ 'How',
+ 'can',
+ 'we',
+ 'remove',
+ 'it']
+
+clean = re.findall(r'[^!.?, ]+',test_phrase)
+
+clean
+
+['This',
+ 'is',
+ 'a',
+ 'string',
+ 'but',
+ 'it',
+ 'has',
+ 'punctuation',
+ 'How',
+ 'can',
+ 'we',
+ 'remove',
+ 'it']
+
+' '.join(clean)
+
+'This is a string but it has punctuation How can we remove it'
+
+ 
+
+ 
+
+#inclusion method of regex
+
+text = 'Only find the hypen-words in this sentence. but you do no know how long-the words are'
+
+pattern3 = r'[\w]+'
+
+re.findall(pattern3, text)
+
+['Only',
+ 'find',
+ 'the',
+ 'hypen',
+ 'words',
+ 'in',
+ 'this',
+ 'sentence',
+ 'but',
+ 'you',
+ 'do',
+ 'no',
+ 'know',
+ 'how',
+ 'long',
+ 'the',
+ 'words',
+ 'are']
+
+pattern4 = r'[\w]+-[\w]+'
+
+re.findall(pattern4, text)
+
+['hypen-words', 'long-the']
+
+# Find words that start with cat and end with one of these options: 'fish','nap', or 'claw'
+text = 'Hello, would you like some catfish?'
+texttwo = "Hello, would you like to take a catnap?"
+textthree = "Hello, have you seen this caterpillar?"
+
+re.search(r'cat(fish|nap|erpillar)', textthree)
+
+<re.Match object; span=(26, 37), match='caterpillar'>
+
+ 
+
+#Timing your Python Code
+
+def func_one(n):
+    '''
+    Given a number n, returns a list of string integers
+    ['0','1','2',...'n]
+    '''
+    return [str(num) for num in range(n)]
+
+func_one(10)
+
+['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+
+def func_two(n):
+    '''
+    Given a number n, returns a list of string integers
+    ['0','1','2',...'n]
+    '''
+    return list(map(str,range(n)))
+
+func_two(10)
+
+['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+
+import time
+
+# STEP 1: Get start time
+start_time = time.time()
+# Step 2: Run your code you want to time
+result = func_one(100000)
+# Step 3: Calculate total time elapsed
+end_time = time.time() - start_time
+
+end_time
+
+0.030925512313842773
+
+# STEP 1: Get start time
+start_time = time.time()
+# Step 2: Run your code you want to time
+result = func_two(100000)
+# Step 3: Calculate total time elapsed
+end_time = time.time() - start_time
+
+end_time
+
+0.02969813346862793
+
+import timeit
+
+timeit.timeit
+
+<function timeit.timeit(stmt='pass', setup='pass', timer=<built-in function perf_counter>, number=1000000, globals=None)>
+
+setup = '''
+def func_one(n):
+    return [str(num) for num in range(n)]
+'''
+
+stmt = 'func_one(100)'
+
+timeit.timeit(stmt,setup,number=100000)
+
+1.8832522830343805
+
+setup2 = '''
+def func_two(n):
+    return list(map(str,range(n)))
+'''
+
+stmt2 = 'func_two(100)'
+
+timeit.timeit(stmt2,setup2,number=100000)
+
+1.6574230630067177
+
+ 
+
+#Zipping and Unzipping files with Python
+
+f = open("new_file.txt",'w+')
+f.write("Here is some text")
+f.close()
+
+list
+
+list
+
+pwd
+
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+/tmp/wsuser/ipykernel_154/1881158759.py in <module>
+----> 1 pwd
+      2 
+
+NameError: name 'pwd' is not defined
+
+f = open("new_file2.txt",'w+')
+f.write("Here is some text")
+f.close()
+
+#zipping both files using python
+import zipfile
+
+comp_file = zipfile.ZipFile('comp_file.zip', 'w')
+
+comp_file.write('new_file.txt',compress_type=zipfile.ZIP_DEFLATED)
+
+comp_file.write('new_file2.txt',compress_type=zipfile.ZIP_DEFLATED)
+
+---------------------------------------------------------------------------
+FileNotFoundError                         Traceback (most recent call last)
+/tmp/wsuser/ipykernel_154/1200926595.py in <module>
+----> 1 comp_file.write('new_file2.txt',compress_type=zipfile.ZIP_DEFLATED)
+
+/opt/conda/envs/Python-3.8-main/lib/python3.8/zipfile.py in write(self, filename, arcname, compress_type, compresslevel)
+   1739             )
+   1740 
+-> 1741         zinfo = ZipInfo.from_file(filename, arcname,
+   1742                                   strict_timestamps=self._strict_timestamps)
+   1743 
+
+/opt/conda/envs/Python-3.8-main/lib/python3.8/zipfile.py in from_file(cls, filename, arcname, strict_timestamps)
+    521         if isinstance(filename, os.PathLike):
+    522             filename = os.fspath(filename)
+--> 523         st = os.stat(filename)
+    524         isdir = stat.S_ISDIR(st.st_mode)
+    525         mtime = time.localtime(st.st_mtime)
+
+FileNotFoundError: [Errno 2] No such file or directory: 'new_file2.txt'
+
+pwd
+
+'/home/wsuser/work'
+
+ls -la
+
+total 24
+drwxr-x--- 3 wsuser wscommon 4096 Nov 24 02:46 ./
+drwxrwx--- 1 wsuser wscommon 4096 Nov 24 01:56 ../
+-rw-rw---- 1 wsuser wscommon   61 Nov 24 02:46 comp_file.zip
+-rw-rw---- 1 wsuser wscommon   17 Nov 24 02:45 new_file.txt
+drwxr-x--- 2 wsuser wscommon 4096 Nov 24 01:55 .virtual_documents/
+
+comp_file.close()
+
+#unzipping files
+
+zip_obj = zipfile.ZipFile('comp_file.zip', 'r')
+
+zip_obj.extractall('extracted_content')
+
+ls -la
+
+total 28
+drwxr-x--- 4 wsuser wscommon 4096 Nov 24 02:46 ./
+drwxrwx--- 1 wsuser wscommon 4096 Nov 24 01:56 ../
+-rw-rw---- 1 wsuser wscommon  141 Nov 24 02:46 comp_file.zip
+drwxrwx--- 2 wsuser wscommon 4096 Nov 24 02:46 extracted_content/
+-rw-rw---- 1 wsuser wscommon   17 Nov 24 02:45 new_file.txt
+drwxr-x--- 2 wsuser wscommon 4096 Nov 24 01:55 .virtual_documents/
+
+cd extracted_content
+
+/home/wsuser/work/extracted_content
+
+ls -la
+
+total 12
+drwxrwx--- 2 wsuser wscommon 4096 Nov 24 02:46 ./
+drwxr-x--- 4 wsuser wscommon 4096 Nov 24 02:46 ../
+-rw-rw---- 1 wsuser wscommon   17 Nov 24 02:46 new_file.txt
+
+cd ..
+
+/home/wsuser/work
+
+import shutil
+
+#Zip entire directory
+
+dir_to_zip = '/home/wsuser/work/extracted_content'
+
+output_filename = 'example'
+
+shutil.make_archive(output_filename,'zip',dir_to_zip)
+
+'/home/wsuser/work/example.zip'
+
+ls -la
+
+total 32
+drwxr-x--- 4 wsuser wscommon 4096 Nov 24 02:46 ./
+drwxrwx--- 1 wsuser wscommon 4096 Nov 24 01:56 ../
+-rw-rw---- 1 wsuser wscommon  141 Nov 24 02:46 comp_file.zip
+-rw-rw---- 1 wsuser wscommon  141 Nov 24 02:46 example.zip
+drwxrwx--- 2 wsuser wscommon 4096 Nov 24 02:46 extracted_content/
+-rw-rw---- 1 wsuser wscommon   17 Nov 24 02:45 new_file.txt
+drwxr-x--- 2 wsuser wscommon 4096 Nov 24 01:55 .virtual_documents/
+
+#unzip entire directory
+shutil.unpack_archive('example.zip','final_unzip','zip')
+
+ls -la
+
+total 36
+drwxr-x--- 5 wsuser wscommon 4096 Nov 24 02:46 ./
+drwxrwx--- 1 wsuser wscommon 4096 Nov 24 01:56 ../
+-rw-rw---- 1 wsuser wscommon  141 Nov 24 02:46 comp_file.zip
+-rw-rw---- 1 wsuser wscommon  141 Nov 24 02:46 example.zip
+drwxrwx--- 2 wsuser wscommon 4096 Nov 24 02:46 extracted_content/
+drwxrwx--- 2 wsuser wscommon 4096 Nov 24 02:46 final_unzip/
+-rw-rw---- 1 wsuser wscommon   17 Nov 24 02:45 new_file.txt
+drwxr-x--- 2 wsuser wscommon 4096 Nov 24 01:55 .virtual_documents/
+
+cd final_unzip
+
+/home/wsuser/work/final_unzip
+
+ls -la
+
+total 12
+drwxrwx--- 2 wsuser wscommon 4096 Nov 24 02:46 ./
+drwxr-x--- 5 wsuser wscommon 4096 Nov 24 02:46 ../
+-rw-rw---- 1 wsuser wscommon   17 Nov 24 02:46 new_file.txt
+
+# Advanced-Python-Module-Exercise
+
+shutil.unpack_archive('unzip_me_for_instructions.zip','','zip')
+
+---------------------------------------------------------------------------
+ReadError                                 Traceback (most recent call last)
+/tmp/wsuser/ipykernel_154/2032986864.py in <module>
+----> 1 shutil.unpack_archive('unzip_me_for_instructions.zip','','zip')
+
+/opt/conda/envs/Python-3.8-main/lib/python3.8/shutil.py in unpack_archive(filename, extract_dir, format)
+   1230 
+   1231         func = format_info[1]
+-> 1232         func(filename, extract_dir, **dict(format_info[2]))
+   1233     else:
+   1234         # we need to look at the registered unpackers supported extensions
+
+/opt/conda/envs/Python-3.8-main/lib/python3.8/shutil.py in _unpack_zipfile(filename, extract_dir)
+   1134 
+   1135     if not zipfile.is_zipfile(filename):
+-> 1136         raise ReadError("%s is not a zip file" % filename)
+   1137 
+   1138     zip = zipfile.ZipFile(filename)
+
+ReadError: unzip_me_for_instructions.zip is not a zip file
+
+#Good work on unzipping the file!
+#You should now see 5 folders, each with a lot of random .txt files.
+#Within one of these text files is a telephone number formated ###-###-#### 
+#Use the Python os module and regular expressions to iterate through each file, open it, and search for a telephone number.
+#Good luck!
+
+with open('extracted_content/Instructions.txt') as f:
+    content = f.read()
+    print(content)
+
+---------------------------------------------------------------------------
+FileNotFoundError                         Traceback (most recent call last)
+/tmp/wsuser/ipykernel_154/423831898.py in <module>
+----> 1 with open('extracted_content/Instructions.txt') as f:
+      2     content = f.read()
+      3     print(content)
+
+FileNotFoundError: [Errno 2] No such file or directory: 'extracted_content/Instructions.txt'
+
+import re
+
+pattern = r'\d{3}-\d{3}-\d{4}'
+
+test_string = "here is a random number 1231231234 , here is phone number formatted 123-123-1234"
+
+re.findall(pattern,test_string)
+
+['123-123-1234']
+
+ 
+
+def search(file,pattern= r'\d{3}-\d{3}-\d{4}'):
+    f = open(file,'r')
+    text = f.read()
+    
+    if re.search(pattern,text):
+        return re.search(pattern,text)
+    else:
+        return ''
+
+import os
+
+result = []
+
+for folder,sub_folder,files in os.walk(os.getcwd()+'\\extracted_content'):
+    
+    for f in files:
+        full_path = folder+'\\'+f
+        
+        result.append(search(full_path))
+
+for r in results:
+    if r != '':
+        print(r.group())
+
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+/tmp/wsuser/ipykernel_154/2755669730.py in <module>
+----> 1 for r in results:
+      2     if r != '':
+      3         print(r.group())
+
+TypeError: 're.Match' object is not iterable
+
+ 
+
+ 
+
+#$ cat scan.py
+
+import os
+import re
+
+def search(file,pattern= r'\d{3}-\d{3}-\d{4}'):
+    f = open(file,'r')
+    text = f.read()
+
+    if re.search(pattern,text):
+        return re.search(pattern,text)
+    else:
+        return ''
+
+
+results = []
+for folder , sub_folders , files in os.walk(os.getcwd()+"/extracted_content"):
+
+    #print('\n')
+    #print('The Files are: ')
+    for f in files:
+        full_path = folder+'/'+f
+        results.append(search(full_path))
+	#print(f"\t Files: {f}")
+#print(results)
+
+for r in results:
+    if r != '':
+        print(r.group())
+
+ 
+

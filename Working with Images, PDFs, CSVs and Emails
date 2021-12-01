@@ -1,0 +1,670 @@
+
+
+#Python with Images, PDFs, Spreadsheets CSR and Emails
+
+ 
+
+#IMAGES WITH PYTHON
+
+# pip install pillow
+
+# relavant documentation - https://pillow.readthedocs.io/en/stable/
+
+import urllib.request
+
+urllib.request.urlretrieve("https://images.freeimages.com/images/large-previews/c53/yellowstone-river-1361768.jpg", "local-filename.jpg")
+
+('local-filename.jpg', <http.client.HTTPMessage at 0x7fbdf456ee80>)
+
+ls -la
+
+total 532
+drwxr-x--- 3 wsuser wscommon   4096 Nov 30 23:19 ./
+drwxrwx--- 1 wsuser wscommon   4096 Nov 30 22:49 ../
+-rw-rw---- 1 wsuser wscommon 524553 Nov 30 23:19 local-filename.jpg
+drwxr-x--- 2 wsuser wscommon   4096 Nov 30 22:48 .virtual_documents/
+
+from PIL import Image
+
+mac = Image.open('local-filename.jpg')
+
+type(mac)
+
+PIL.JpegImagePlugin.JpegImageFile
+
+mac
+
+mac.show()
+
+mac.size
+
+(1600, 1200)
+
+max.filename
+
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+/tmp/wsuser/ipykernel_155/2014226005.py in <module>
+----> 1 max.filename
+
+AttributeError: 'builtin_function_or_method' object has no attribute 'filename'
+
+mac.format_description
+
+'JPEG (ISO 10918)'
+
+#CROPPING IMAGES
+
+mac.crop((0,0,100,100))
+
+mac.size
+
+(1600, 1200)
+
+halfway = 1600/2
+
+x = halfway - 200
+y = halfway + 200
+
+mac.crop((0,0,x,y))
+
+valley = mac.crop((0,0,x,y))
+
+valley
+
+copy = mac.crop((0,0,100,100))
+
+copy
+
+#paste a copy over the same image
+mac.paste(im=copy,box=(0,0))
+
+mac
+
+mac.paste(im=copy,box=(200,200))
+
+mac
+
+mac.paste(im=copy,box=(400,400))
+
+mac
+
+mac.resize((1000,700))
+
+mac.rotate(90)
+
+mac.rotate(180)
+
+mac.rotate(0)
+
+#Colour and transparency using the 'putalpha' method
+
+mac.putalpha(255)
+
+mac
+
+#change transparency 
+
+mac.putalpha(100)
+
+mac
+
+# Images exercise
+
+#
+#Image Exercise
+
+#In the folder "Working with Images" (same folder this notebook is located in) there are two images we will be working with:
+
+#    word_matrix.png
+#    mask.png
+
+#The word_matrix is a .png image that contains a spreadsheet of words with a hidden message in it.
+
+#Your task is to use the mask.png image to reveal the hidden message inside the word_matrix.png. Keep in mind, you may need to make changes to the 
+#mask.png in order for this to work. That is all we'll say for now, since we really want you to discover this on your own!
+
+#This exercise is more open-ended, so we won't guide you with the steps, instead, letting you explore and figure things out on your own as you would 
+#in a real world situation. However, if you get stuck, you can always view the solutions video or notebook for guidance. Best of luck!
+
+
+
+import urllib.request
+
+urllib.request.urlretrieve("https://raw.githubusercontent.com/Pierian-Data/Complete-Python-3-Bootcamp/master/14-Working-with-Images/word_matrix.png", "word_matrix.png")
+urllib.request.urlretrieve("https://raw.githubusercontent.com/Pierian-Data/Complete-Python-3-Bootcamp/master/14-Working-with-Images/mask.png", "mask.png")
+
+('mask.png', <http.client.HTTPMessage at 0x7fbdcd1ab040>)
+
+urllib.request.urlretrieve("https://raw.githubusercontent.com/Pierian-Data/Complete-Python-3-Bootcamp/master/14-Working-with-Images/word_matrix.png", "word_matrix.png")
+
+('word_matrix.png', <http.client.HTTPMessage at 0x7fbdcd1ab9d0>)
+
+ls -la
+
+total 620
+drwxr-x--- 3 wsuser wscommon   4096 Dec  1 00:28 ./
+drwxrwx--- 1 wsuser wscommon   4096 Nov 30 22:49 ../
+-rw-rw---- 1 wsuser wscommon 524553 Nov 30 23:19 local-filename.jpg
+-rw-rw---- 1 wsuser wscommon   1217 Dec  1 00:28 mask.png
+drwxr-x--- 2 wsuser wscommon   4096 Nov 30 22:48 .virtual_documents/
+-rw-rw---- 1 wsuser wscommon  82434 Dec  1 00:28 word_matrix.png
+
+mask = Image.open('mask.png')
+
+work_matrix = Image.open('word_matrix.png')
+
+mask.size
+
+(505, 251)
+
+work_matrix.size
+
+(1015, 559)
+
+resize_mask = mask.resize((1015, 559))
+
+resize_mask.putalpha(100)
+
+resize_mask
+
+work_matrix.paste(im=resize_mask,box=(0,0),mask=resize_mask)
+
+work_matrix
+
+ 
+
+#PDFs and Spreadsheets
+
+ 
+
+#Working with CSVs
+
+import csv
+
+#great script which downloads online CSV and saves them to your PC.
+
+import csv
+import requests
+
+url = 'https://raw.githubusercontent.com/Pierian-Data/Complete-Python-3-Bootcamp/master/15-PDFs-and-Spreadsheets/example.csv'
+response = requests.get(url)        
+
+with open('example.csv', 'w') as f:
+    writer = csv.writer(f)
+    for line in response.iter_lines():
+        writer.writerow(line.decode('utf-8').split(','))
+
+ls -la
+
+total 700
+drwxr-x--- 3 wsuser wscommon   4096 Dec  1 02:16 ./
+drwxrwx--- 1 wsuser wscommon   4096 Nov 30 22:49 ../
+-rw-rw---- 1 wsuser wscommon  73405 Dec  1 02:52 example.csv
+-rw-rw---- 1 wsuser wscommon 524553 Nov 30 23:19 local-filename.jpg
+-rw-rw---- 1 wsuser wscommon     37 Dec  1 02:19 makeup_new.csv
+-rw-rw---- 1 wsuser wscommon   1217 Dec  1 00:28 mask.png
+-rw-rw---- 1 wsuser wscommon     28 Dec  1 02:19 to_save_file.csv
+drwxr-x--- 2 wsuser wscommon   4096 Nov 30 22:48 .virtual_documents/
+-rw-rw---- 1 wsuser wscommon  82434 Dec  1 00:28 word_matrix.png
+
+#open the file
+data = open('example.csv',encoding='utf-8')
+
+#csv.reader
+
+csv_data = csv.reader(data)
+
+#reformat it into a python object list of Lists
+
+data_lines = list(csv_data)
+
+data_lines
+
+[['id', 'first_name', 'last_name', 'email', 'gender', 'ip_address', 'city'],
+ ['1',
+  'Joseph',
+  'Zaniolini',
+  'jzaniolini0@simplemachines.org',
+  'Male',
+  '163.168.68.132',
+  'Pedro Leopoldo'],
+ ['2',
+  'Freida',
+  'Drillingcourt',
+  'fdrillingcourt1@umich.edu',
+  'Female',
+  '97.212.102.79',
+  'Buri'],
+ ['3',
+  'Nanni',
+  'Herity',
+  'nherity2@statcounter.com',
+  'Female',
+  '145.151.178.98',
+  'Claver'],
+ ['4',
+  'Orazio',
+  'Frayling',
+  'ofrayling3@economist.com',
+  'Male',
+  '25.199.143.143',
+  'Kungur'],
+ ['5',
+  'Julianne',
+  'Murrison',
+  'jmurrison4@cbslocal.com',
+  'Female',
+  '10.186.243.144',
+  'Sainte-Luce-sur-Loire'],
+ ['6',
+  'Lucy',
+  'Gamet',
+  'lgamet5@list-manage.com',
+  'Female',
+  '10.151.93.36',
+  'Pak Phli'],
+
+
+len(data_lines)
+
+1001
+
+data_lines[0]
+
+['id', 'first_name', 'last_name', 'email', 'gender', 'ip_address', 'city']
+
+for line in data_lines[:5]:
+    print(line)
+
+['id', 'first_name', 'last_name', 'email', 'gender', 'ip_address', 'city']
+['1', 'Joseph', 'Zaniolini', 'jzaniolini0@simplemachines.org', 'Male', '163.168.68.132', 'Pedro Leopoldo']
+['2', 'Freida', 'Drillingcourt', 'fdrillingcourt1@umich.edu', 'Female', '97.212.102.79', 'Buri']
+['3', 'Nanni', 'Herity', 'nherity2@statcounter.com', 'Female', '145.151.178.98', 'Claver']
+['4', 'Orazio', 'Frayling', 'ofrayling3@economist.com', 'Male', '25.199.143.143', 'Kungur']
+
+#get the entire row
+data_lines[10]
+
+['10',
+ 'Hyatt',
+ 'Gasquoine',
+ 'hgasquoine9@google.ru',
+ 'Male',
+ '221.155.106.39',
+ 'Złoty Stok']
+
+#get the records email address at row 10 at column 3
+data_lines[10][3]
+
+'hgasquoine9@google.ru'
+
+#to export all the emails from the CSV file
+all_emails = []
+
+#all emails could be [1:]
+for line in data_lines[1:4]:
+    all_emails.append(line[3])
+
+all_emails
+
+['jzaniolini0@simplemachines.org',
+ 'fdrillingcourt1@umich.edu',
+ 'nherity2@statcounter.com']
+
+#you want to combine two columes together ie first name and last name to make full name and create a list
+full_names = []
+
+for line in data_lines[1:15]:
+    full_names.append(line[1]+' '+line[2])
+
+full_names
+
+['Joseph Zaniolini',
+ 'Freida Drillingcourt',
+ 'Nanni Herity',
+ 'Orazio Frayling',
+ 'Julianne Murrison',
+ 'Lucy Gamet',
+ 'Dyana Howatt',
+ 'Kassey Herion',
+ 'Chrissy Hedworth',
+ 'Hyatt Gasquoine',
+ 'Felicdad Tarr',
+ 'Andrew Bath',
+ 'Lucais Chastang',
+ 'Car Cerie']
+
+#write to a CSV file
+
+file_to_output = open('to_save_file.csv',mode='w',newline='')
+
+csv_writer = csv.writer(file_to_output,delimiter=',')
+
+csv_writer.writerow(['a','b','c'])
+
+7
+
+csv_writer.writerows([['1','2','3'],['4','5','6']])
+
+file_to_output
+
+<_io.TextIOWrapper name='to_save_file.csv' mode='w' encoding='UTF-8'>
+
+file_to_output.close()
+
+ls -la
+
+total 700
+drwxr-x--- 3 wsuser wscommon   4096 Dec  1 02:16 ./
+drwxrwx--- 1 wsuser wscommon   4096 Nov 30 22:49 ../
+-rw-rw---- 1 wsuser wscommon  73405 Dec  1 02:54 example.csv
+-rw-rw---- 1 wsuser wscommon 524553 Nov 30 23:19 local-filename.jpg
+-rw-rw---- 1 wsuser wscommon     37 Dec  1 02:19 makeup_new.csv
+-rw-rw---- 1 wsuser wscommon   1217 Dec  1 00:28 mask.png
+-rw-rw---- 1 wsuser wscommon     21 Dec  1 03:53 to_save_file.csv
+drwxr-x--- 2 wsuser wscommon   4096 Nov 30 22:48 .virtual_documents/
+-rw-rw---- 1 wsuser wscommon  82434 Dec  1 00:28 word_matrix.png
+
+f = open('to_save_file.csv',mode='a',newline='')
+
+csv_writer = csv.writer(f)
+
+csv_writer.writerow(['1','2','3'])
+
+7
+
+f.close()
+
+f
+
+<_io.TextIOWrapper name='to_save_file.csv' mode='a' encoding='UTF-8'>
+
+f = open('to_save_file.csv')
+
+f
+
+<_io.TextIOWrapper name='to_save_file.csv' mode='r' encoding='UTF-8'>
+
+
+#PDF files in Python
+
+ls -la
+
+total 700
+drwxr-x--- 3 wsuser wscommon   4096 Dec  1 02:16 ./
+drwxrwx--- 1 wsuser wscommon   4096 Nov 30 22:49 ../
+-rw-rw---- 1 wsuser wscommon  73405 Dec  1 02:54 example.csv
+-rw-rw---- 1 wsuser wscommon 524553 Nov 30 23:19 local-filename.jpg
+-rw-rw---- 1 wsuser wscommon     37 Dec  1 02:19 makeup_new.csv
+-rw-rw---- 1 wsuser wscommon   1217 Dec  1 00:28 mask.png
+-rw-rw---- 1 wsuser wscommon     28 Dec  1 03:55 to_save_file.csv
+drwxr-x--- 2 wsuser wscommon   4096 Nov 30 22:48 .virtual_documents/
+-rw-rw---- 1 wsuser wscommon  82434 Dec  1 00:28 word_matrix.png
+
+import PyPDF2
+
+---------------------------------------------------------------------------
+ModuleNotFoundError                       Traceback (most recent call last)
+/tmp/wsuser/ipykernel_155/314715566.py in <module>
+----> 1 import PyPDF2
+
+ModuleNotFoundError: No module named 'PyPDF2'
+
+f = open('Working_Business_Proposal.pdf','rb')
+
+---------------------------------------------------------------------------
+FileNotFoundError                         Traceback (most recent call last)
+/tmp/wsuser/ipykernel_155/820057086.py in <module>
+----> 1 f = open('Working_Business_Proposal.pdf','rb')
+
+FileNotFoundError: [Errno 2] No such file or directory: 'Working_Business_Proposal.pdf'
+
+pdf_reader = PyPDF2.PdfFileReader(f)
+
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+/tmp/wsuser/ipykernel_155/1497031239.py in <module>
+----> 1 pdf_reader = PyPDF2.PdfFileReader(f)
+
+NameError: name 'PyPDF2' is not defined
+
+#CSV and PDF Puzzle
+
+#Task One: Use Python to extract the Google Drive link from the .csv file. (Hint: Its along the diagonal from top left to bottom right).
+
+import csv
+import requests
+
+url = 'https://raw.githubusercontent.com/Pierian-Data/Complete-Python-3-Bootcamp/master/15-PDFs-and-Spreadsheets/Exercise_Files/find_the_link.csv'
+response = requests.get(url)        
+
+with open('find_the_link.csv', 'w') as f:
+    writer = csv.writer(f)
+    for line in response.iter_lines():
+        writer.writerow(line.decode('utf-8').split(','))
+
+ls -la
+
+total 716
+drwxr-x--- 3 wsuser wscommon   4096 Dec  1 04:10 ./
+drwxrwx--- 1 wsuser wscommon   4096 Nov 30 22:49 ../
+-rw-rw---- 1 wsuser wscommon  73405 Dec  1 02:54 example.csv
+-rw-rw---- 1 wsuser wscommon  12638 Dec  1 04:10 find_the_link.csv
+-rw-rw---- 1 wsuser wscommon 524553 Nov 30 23:19 local-filename.jpg
+-rw-rw---- 1 wsuser wscommon     37 Dec  1 02:19 makeup_new.csv
+-rw-rw---- 1 wsuser wscommon   1217 Dec  1 00:28 mask.png
+-rw-rw---- 1 wsuser wscommon     28 Dec  1 03:55 to_save_file.csv
+drwxr-x--- 2 wsuser wscommon   4096 Nov 30 22:48 .virtual_documents/
+-rw-rw---- 1 wsuser wscommon  82434 Dec  1 00:28 word_matrix.png
+
+data = open('find_the_link.csv',encoding='utf-8')
+
+data
+
+<_io.TextIOWrapper name='find_the_link.csv' mode='r' encoding='utf-8'>
+
+csv_data = csv.reader(data)
+
+data_lines = list(csv_data)
+
+data_lines
+
+[['h',
+  '53',
+  '24',
+  '46',
+  '4',
+  '11',
+  '3',
+  '35',
+  '17',
+  '52',
+  '9',
+  '60',
+  '26',
+  '60',
+  '72',
+  '39',
+  '11',
+  '80',
+  '86',
+  '66',
+ 
+for line in data_lines[:5]:
+    print(line)
+
+['h', '53', '24', '46', '4', '11', '3', '35', '17', '52', '9', '60', '26', '60', '72', '39', '11', '80', '86', '66', '59', '9', '41', '33', '11', '42', '69', '74', '91', '61', '5', '69', '17', '17', '78', '6', '51', '54', '54', '94', '47', '37', '0', '16', '71', '6', '83', '7', '6', '38', '61', '18', '68', '15', '2', '81', '49', '5', '17', '21', '36', '63', '38', '24', '3', '99']
+['85', 't', '31', '54', '60', '22', '77', '39', '93', '38', '31', '16', '29', '27', '8', '35', '0', '54', '84', '21', '47', '37', '66', '83', '26', '22', '68', '25', '44', '81', '27', '68', '17', '63', '13', '99', '38', '43', '87', '83', '73', '88', '67', '5', '12', '10', '7', '58', '64', '56', '53', '88', '96', '20', '7', '85', '94', '23', '14', '79', '24', '27', '90', '40', '27', '8']
+['22', '98', 't', '83', '33', '53', '66', '13', '81', '53', '60', '52', '45', '51', '39', '98', '14', '94', '68', '5', '99', '62', '68', '95', '50', '81', '64', '58', '96', '1', '71', '4', '60', '57', '84', '39', '5', '24', '79', '19', '86', '20', '15', '55', '68', '26', '81', '78', '3', '2', '24', '64', '17', '86', '3', '16', '89', '81', '33', '70', '42', '5', '31', '42', '45', '42']
+['11', '58', '4', 'p', '59', '85', '97', '35', '11', '78', '75', '23', '83', '37', '79', '8', '82', '42', '73', '9', '13', '98', '57', '50', '28', '41', '55', '58', '33', '85', '80', '69', '64', '53', '87', '38', '58', '48', '31', '82', '56', '14', '49', '8', '50', '4', '5', '9', '69', '33', '61', '24', '61', '21', '59', '1', '81', '73', '13', '75', '21', '13', '15', '85', '71', '36']
+['0', '15', '8', '77', 's', '90', '42', '25', '38', '93', '18', '81', '6', '31', '17', '3', '55', '91', '46', '30', '28', '6', '45', '66', '97', '9', '71', '31', '26', '50', '86', '52', '24', '93', '97', '18', '71', '79', '61', '9', '19', '67', '74', '48', '54', '30', '69', '1', '43', '11', '8', '97', '52', '22', '66', '81', '55', '53', '5', '91', '30', '14', '62', '27', '27', '33']
+
+data_lines[0][0]
+
+'h'
+
+link_str =''
+
+for row_num,data in enumerate(data_lines):
+    link_str += data[row_num]
+
+link_str
+
+'https://drive.google.com/open?id=1G6SEgg018UB4_4xsAJJ5TdzrhmXipr4Q'
+
+ 
+
+#Emails with Python
+
+import smtplib
+
+smtp_object = smtplib.SMTP('smtp.gmail.com',587)
+
+smtp_object.ehlo()
+
+(250,
+ b'smtp.gmail.com at your service, [169.56.36.90]\nSIZE 35882577\n8BITMIME\nSTARTTLS\nENHANCEDSTATUSCODES\nPIPELINING\nCHUNKING\nSMTPUTF8')
+
+smtp_object.starttls()
+
+(220, b'2.0.0 Ready to start TLS')
+
+import getpass
+
+password = getpass.getpass('Password Please: ')
+
+Password Please: ········
+
+email = getpass.getpass("Enter your email: ")
+password = getpass.getpass("Enter your password: ")
+smtp_object.login(email,password)
+
+Enter your email: ········
+Enter your password: ········
+
+---------------------------------------------------------------------------
+SMTPServerDisconnected                    Traceback (most recent call last)
+/tmp/wsuser/ipykernel_155/132008942.py in <module>
+      1 email = getpass.getpass("Enter your email: ")
+      2 password = getpass.getpass("Enter your password: ")
+----> 3 smtp_object.login(email,password)
+
+/opt/conda/envs/Python-3.8-main/lib/python3.8/smtplib.py in login(self, user, password, initial_response_ok)
+    710         """
+    711 
+--> 712         self.ehlo_or_helo_if_needed()
+    713         if not self.has_extn("auth"):
+    714             raise SMTPNotSupportedError(
+
+/opt/conda/envs/Python-3.8-main/lib/python3.8/smtplib.py in ehlo_or_helo_if_needed(self)
+    608         if self.helo_resp is None and self.ehlo_resp is None:
+    609             if not (200 <= self.ehlo()[0] <= 299):
+--> 610                 (code, resp) = self.helo()
+    611                 if not (200 <= code <= 299):
+    612                     raise SMTPHeloError(code, resp)
+
+/opt/conda/envs/Python-3.8-main/lib/python3.8/smtplib.py in helo(self, name)
+    437         """
+    438         self.putcmd("helo", name or self.local_hostname)
+--> 439         (code, msg) = self.getreply()
+    440         self.helo_resp = msg
+    441         return (code, msg)
+
+/opt/conda/envs/Python-3.8-main/lib/python3.8/smtplib.py in getreply(self)
+    401             if not line:
+    402                 self.close()
+--> 403                 raise SMTPServerDisconnected("Connection unexpectedly closed")
+    404             if self.debuglevel > 0:
+    405                 self._print_debug('reply:', repr(line))
+
+SMTPServerDisconnected: Connection unexpectedly closed
+
+from_address = getpass.getpass("Enter your email: ")
+to_address = getpass.getpass("Enter the email of the recipient: ")
+subject = input("Enter the subject line: ")
+message = input("Type out the message you want to send: ")
+msg = "Subject: " + subject + '\n' + message
+smtp_object.sendmail(from_address,to_address,msg)
+
+Enter your email: ········
+Enter the email of the recipient: ········
+Enter the subject line: 
+Type out the message you want to send: 
+
+---------------------------------------------------------------------------
+SMTPServerDisconnected                    Traceback (most recent call last)
+/tmp/wsuser/ipykernel_155/960926086.py in <module>
+      4 message = input("Type out the message you want to send: ")
+      5 msg = "Subject: " + subject + '\n' + message
+----> 6 smtp_object.sendmail(from_address,to_address,msg)
+
+/opt/conda/envs/Python-3.8-main/lib/python3.8/smtplib.py in sendmail(self, from_addr, to_addrs, msg, mail_options, rcpt_options)
+    877             for option in mail_options:
+    878                 esmtp_opts.append(option)
+--> 879         (code, resp) = self.mail(from_addr, esmtp_opts)
+    880         if code != 250:
+    881             if code == 421:
+
+/opt/conda/envs/Python-3.8-main/lib/python3.8/smtplib.py in mail(self, sender, options)
+    541                         'SMTPUTF8 not supported by server')
+    542             optionlist = ' ' + ' '.join(options)
+--> 543         self.putcmd("mail", "FROM:%s%s" % (quoteaddr(sender), optionlist))
+    544         return self.getreply()
+    545 
+
+/opt/conda/envs/Python-3.8-main/lib/python3.8/smtplib.py in putcmd(self, cmd, args)
+    374                 f'command and arguments contain prohibited newline characters: {s}'
+    375             )
+--> 376         self.send(f'{s}{CRLF}')
+    377 
+    378     def getreply(self):
+
+/opt/conda/envs/Python-3.8-main/lib/python3.8/smtplib.py in send(self, s)
+    361                 raise SMTPServerDisconnected('Server not connected')
+    362         else:
+--> 363             raise SMTPServerDisconnected('please run connect() first')
+    364 
+    365     def putcmd(self, cmd, args=""):
+
+SMTPServerDisconnected: please run connect() first
+
+smtp_object.quit()
+
+---------------------------------------------------------------------------
+SMTPServerDisconnected                    Traceback (most recent call last)
+/tmp/wsuser/ipykernel_155/790118495.py in <module>
+----> 1 smtp_object.quit()
+
+/opt/conda/envs/Python-3.8-main/lib/python3.8/smtplib.py in quit(self)
+   1000     def quit(self):
+   1001         """Terminate the SMTP session."""
+-> 1002         res = self.docmd("quit")
+   1003         # A new EHLO is required after reconnecting with connect()
+   1004         self.ehlo_resp = self.helo_resp = None
+
+/opt/conda/envs/Python-3.8-main/lib/python3.8/smtplib.py in docmd(self, cmd, args)
+    427     def docmd(self, cmd, args=""):
+    428         """Send a command, and return its response code."""
+--> 429         self.putcmd(cmd, args)
+    430         return self.getreply()
+    431 
+
+/opt/conda/envs/Python-3.8-main/lib/python3.8/smtplib.py in putcmd(self, cmd, args)
+    374                 f'command and arguments contain prohibited newline characters: {s}'
+    375             )
+--> 376         self.send(f'{s}{CRLF}')
+    377 
+    378     def getreply(self):
+
+/opt/conda/envs/Python-3.8-main/lib/python3.8/smtplib.py in send(self, s)
+    361                 raise SMTPServerDisconnected('Server not connected')
+    362         else:
+--> 363             raise SMTPServerDisconnected('please run connect() first')
+    364 
+    365     def putcmd(self, cmd, args=""):
+
+SMTPServerDisconnected: please run connect() first
+
+ 
+

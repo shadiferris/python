@@ -1,0 +1,26 @@
+import http.server
+import socketserver
+
+# Get the directory and port number from the user
+directory = input("Enter the directory path (default is current directory): ").strip() or "."
+port = input("Enter the port number (default is 8000): ").strip() or 8000
+
+try:
+    # Convert the port to an integer
+    port = int(port)
+except ValueError:
+    print("Invalid port number. Using default port 8000.")
+    port = 8000
+
+# Create a custom handler to suppress log messages
+class QuietHandler(http.server.SimpleHTTPRequestHandler):
+    def log_message(self, format, *args):
+        pass
+
+# Start the HTTP server
+with socketserver.TCPServer(("", port), QuietHandler) as httpd:
+    print(f"Serving directory '{directory}' at http://localhost:{port}/")
+    try:
+        httpd.serve_forever()
+    except KeyboardInterrupt:
+        print("\nServer stopped.")

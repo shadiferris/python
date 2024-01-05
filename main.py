@@ -43,5 +43,71 @@ print(abs(20)) # whats the absolute value of a number, ie no negative numbers
 '''print(bin(5.5)) # changes the number to binary 
 '''
 
-#Variables
+#Variables -
+# python keywords - https://www.w3schools.com/python/python_ref_keywords.asp
 
+'''iq = 140
+user_age = iq/4
+another = user_age
+
+print(another)
+
+a,b,c = 1,2,3
+
+print(a)
+print(b)
+print(c)
+'''
+
+# Augmented Assignment Operator
+
+'''some_value = 5
+some_value += 5
+
+print(some_value)
+
+# Exercise Augmented Assignment Operator
+# Guess what happens here before you click RUN!
+counter = 0
+
+counter += 1
+counter += 1
+counter += 1
+counter += 1
+counter -= 1
+counter *= 2
+
+print(counter) #what will this print?
+'''
+
+#String
+'''
+
+name = "shadi ferris"
+location = "australia"
+
+print(type(name))
+print(f"My name is {name} and I live in {location}")
+
+first_name = "shadi"
+last_name = "ferris"
+full_name = first_name + " " + last_name
+
+print(full_name)
+'''
+
+#string concentration
+'''
+print('hello' + ' ' + 'world')
+print('hello' + ' ' + '5')
+'''
+
+#type conversion
+'''
+a = str(100)
+b = int(a)
+c = type(b)
+
+print(c)
+
+'''

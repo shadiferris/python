@@ -111,3 +111,55 @@ c = type(b)
 print(c)
 
 '''
+
+#escape sequences
+'''
+weather = "it\'s \"kind of\" sunny"
+print(weather)
+
+tab = "\t there is a \"tab\" at the beginning"
+print(tab)
+
+new_line = "\n there is a \"new line\" at the beginning"
+print(new_line)
+'''
+
+#formatting strings
+#f string
+
+'''name = "Shadi"
+age = 35
+print(f'Hi {name}, how are you? you need to be {age} years old')
+'''
+
+# string indexes
+
+# [start:stop:stepover]
+
+'''index = "Hello World!"
+
+print(index[::2]) # prints every other character
+print(index[-1]) # prints the last character
+print(index[::-1]) # prints the string backwards
+print(index[::-2]) # prints the string backwards every other character
+
+
+
+print(index[-2])
+'''
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

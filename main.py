@@ -148,13 +148,76 @@ print(index[::-2]) # prints the string backwards every other character
 print(index[-2])
 '''
 
+#Immutability
 
+# [start:stop:stepover]
 
+'''selfish = "01234567"
 
+selfish = selfish + 8
 
+print(selfish)
+'''
+#Built in functions + methods
 
+#Functions - https://docs.python.org/3/library/functions.html
+# String methods - https://www.w3schools.com/python/python_ref_string.asp
+'''
+greet = "Hello World"
+shake = "to be or not to be"
+print(len(greet))
 
+new = greet.upper()
+new2 = shake.replace('be', 'you')
+print(new)
+print(new2)
+'''
 
+# Boolean
+# True or False
+'''
+name = "Shadi"
+print(bool(1))
+'''
+
+# Exercise Type Conversion
+
+'''birth_year = input("what year were you born? ")
+name = input("what is your name? ")
+status = input("what is your status? ")
+
+#can use either 'birth_year = int(birth_year)' or "int(birth_year)"
+
+age = 2024 - int(birth_year)
+
+print(f"Hi {name}, you are {age} years old and you are {status}")
+'''
+
+# Exercise Password Checker
+'''
+username = input("What is your username? ")
+password = input("what is your password? ")
+
+password_length = len(password)
+
+length = "*" * int(password_length)
+
+print(f'Your {username}, of {length} is {password_length} characters long')
+
+'''
+
+# List
+
+# Data Structure
+'''
+numbers = [1,2,3,4,5,6]
+letters = ['a','b','c']
+random = [1,2,'c','hello']
+
+print(numbers[1])
+print(letters[2])
+print(random[3])
+'''
 
 
 

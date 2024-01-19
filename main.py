@@ -219,6 +219,328 @@ print(letters[2])
 print(random[3])
 '''
 
+# List slicing
+# lists are mutable, strings are not mutable
+'''
+cart = [
+"apples",
+"oranges",
+"banana",
+"grapes"
+]
+
+cart[0] = 'berry'
+new_cart = cart[:]
+new_cart[0] = 'cherries'
+
+print(new_cart)
+print(cart)
+'''
+
+#What is the output of this code?
+#Before you clikc RUN, guess the output of each print statement!
+'''
+new_list = ['a', 'b', 'c']
+print(new_list[1])
+print(new_list[-2])
+print(new_list[1:3])
+new_list[0] = 'z'
+print(new_list)
+
+my_list = [1,2,3]
+bonus = my_list + [5]
+my_list[0] = 'z'
+print(my_list)
+print(bonus)
+'''
+# Matrix
+'''
+matrix = [
+  [1,2,3],
+  [4,5,6],
+  [7,8,9]
+  ]
+
+access = matrix[2][1]
+
+print(matrix)
+print(access)
+
+# access "Oranges" and print it:
+basket = ["Banana", ["Apples", ["Oranges"], "Blueberries"]];
+print(basket[1][1][0])
+'''
+
+# List Method 2
+# list actions - https://www.w3schools.com/python/python_ref_list.asp
+'''
+numbers1 = [1,2,3,4,5,6]
+#adding
+numbers1.append(100)
+
+new_list = numbers1
+
+print(numbers1)
+print(new_list)
+
+#insert
+numbers2 = [1,2,3,4,5,6]
+
+numbers2.insert(4, 100)
+
+print(numbers2)
+
+#Extend
+numbers3 = [1,2,3,4,5,6]
+print(numbers3)
+
+numbers3.extend([102,103,104])
+
+print(numbers3)
+
+#Remove (pop), removes end of list
+numbers4 = [1,2,3,4,5,6]
+print(numbers3)
+
+numbers4.pop()
+
+print(numbers4)
+
+numbers4.pop(0)
+
+print(numbers4)
+
+#clear
+numbers5 = [1,2,3,4,5,6]
+numbers5.clear()
+print(numbers5)
+'''
+
+# List Method 2
+# Python Keywords - https://www.w3schools.com/python/python_ref_keywords.asp
+'''
+basket = [1,2,3,4,5,6]
+print(basket.index(6))
+
+items = ["apples","banana","orange"]
+
+print(items.index('apples', 0 , 3))
+
+#returns boolean result using python keyword "in"
+print('orange' in items)
+
+print('him' in 'This is a story of a girl')
+
+#count how many times string "orange" appears in the list
+print(items.count("orange"))
+'''
+
+# List Method 3
+#
+'''
+basket = [2,2,1,8,7,4,6,5]
+
+basket.sort()
+
+#print(sorted(basket))
+print(basket)
+
+basket.reverse()
+print(basket)
+'''
+
+
+#fix this code so that it prints a sorted list of all of our friends (alphabetical). Scroll to see answer
+
+'''
+friends = ['Simon', 'Patty', 'Joy', 'Carrie', 'Amira', 'Chu']
+
+#friends.sort()
+
+print(friends)
+
+new_friend = ['Stanley']
+
+friends.extend(new_friend)
+print(sorted(friends))
+
+#new_list = friends + new_friend
+#print(new_list)
+'''
+
+#Common list patterns
+'''
+friends = ['Simon', 'Patty', 'Joy', 'Carrie', 'Amira', 'Chu']
+
+#new_list = list(range(1,101))
+
+#print(new_list)
+
+#sentence = " "
+
+#new_sentence = sentence.join(['hi','this','is','shadi'])
+
+new_sentence = ' '.join(['hi','this','is','shadi'])
+
+
+print(new_sentence)
+
+'''
+
+# List Unpacking
+'''
+a,b,c,d = [1,2,3,4]
+print(a)
+print(b)
+print(c)
+#print(other)
+print(d)
+'''
+
+# None
+'''
+a = None
+print(a)
+'''
+
+# Dictionary
+# dictionary is an unordered key value pair
+
+'''dictionary = { "a": 1, 
+              "b": 2, 
+              "x": 3,
+              "d": [1,2,3],
+              "e": "hello world",
+              "f": True
+             
+             } 
+
+print(dictionary["d"][2])
+
+print(dictionary)
+'''
+
+#Dictionary Keys
+#
+'''
+dictionary = { "a": 1, 
+  123: 2, 
+  True: 3,
+  "d": [1,2,3],
+  "e": "hello world",
+  "f": True
+
+ } 
+
+print(dictionary[True])
+
+'''
+
+#Dictionary Methods
+# Available methods - https://www.w3schools.com/python/python_ref_dictionary.asp
+'''
+user = {
+  'basket': [1,2,3],   
+  True: 3,
+  "greet": 'hello',
+  'age': 50
+  
+ } 
+
+#print(user['greet'])
+# if the "age" key isnt present in the dictionary, we will default to the value "20"
+print(user.get('age', 20))
+'''
+
+#Dictionary Methods 2
+
+'''
+user = {
+  'basket': [1,2,3],   
+  True: 3,
+  "greet": 'hello',
+  'age': 50
+
+ } 
+
+print('basket' in user)
+#check just the values in the dictionary
+print('basket' in user.values())
+#check just the keys in the dictionary
+print('basket' in user.keys())
+
+#empty dictionary
+#print(user.clear())
+
+user2 = user.copy()
+print(user)
+print(user2)
+
+#removes last key:value pair that was inserted into the dictionary
+print(user.popitem())
+
+print(user)
+'''
+
+# Exercise Dictionary Methods
+'''
+# 1 Create a user profile for your new game.
+# This user profile will be stored in a dictionary with keys: 'age', 'username', 'weapons', 'is_active' and 'clan'
+user_profile = {
+    'age': 0,
+    'username': ' ',
+    'weapons': None,
+    'is_active': False,
+    'clan': None
+}
+
+# 2 iterate and print all the keys in the above user.
+print(user_profile.keys())
+
+# 3 Add a new weapon to your user
+user_profile['weapons'] = 'Katana'
+
+# 4 Add a new key to include 'is_banned'. Set it to false
+user_profile.update({'is_banned': False})
+
+# 5 Ban the user by setting the previous key to True
+user_profile['is_banned'] = True
+
+# 6 create a new user2 my copying the previous user and update the age value and username value.
+user2 = user_profile.copy()
+user2.update({'age': 50, 'username': 'User2'})
+print(user_profile)
+print(user2)
+
+'''
+
+#Tuple
+#immutable lists
+'''
+my_tuple = ('apple','grapes','mango', 'grapes')
+
+print(type(my_tuple))
+
+print(my_tuple[2])
+
+print("mango" in my_tuple)
+'''
+
+#Tuple
+# Tuple method - https://www.w3schools.com/python/python_ref_tuple.asp
+'''
+my_tuple = (1,2,3,4,5,5,5)
+
+new_tuple = my_tuple[1:2]
+
+print(new_tuple)
+
+#method to count how many times a value appears in the tuple
+print(my_tuple.count(5))
+
+'''
+
+# Sets
 
 
 

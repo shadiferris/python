@@ -636,3 +636,39 @@ can_message = "message allowed" if is_friend else "not allowed to message"
 
 print(can_message)
 '''
+
+# Short Circuiting
+'''
+is_friend = True
+is_user = True
+
+if is_friend or is_user:
+  print("best friends forever")
+'''
+
+# Logical operations
+# AND
+# OR
+# > , < , <= , >= , ==
+# !=
+# NOT
+'''
+print( 4 == 5)
+print( 4 > 5)
+print( 4 >= 5)
+print( 4 <= 5)
+print( 4 < 5)
+print(not(1 == 1))
+'''
+
+# Exercise Logical operations
+
+is_magician = True
+is_expert = False 
+
+if is_magician and is_expert:
+  print("You are a master magician!!!")
+elif is_magician and not is_expert:
+  print("at least your getting there")
+elif not is_magician:
+  print("you need magic powers")

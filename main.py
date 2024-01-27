@@ -672,3 +672,38 @@ elif is_magician and not is_expert:
   print("at least your getting there")
 elif not is_magician:
   print("you need magic powers")
+
+
+
+# is vs ==
+'''
+print(True == 1) # True
+print("" == 1) # False
+print([] == 1) # false
+print(10 == 10.0) # True
+print([] == []) # true
+
+
+print(True is 1) # false
+print("" is 1) # False
+print([] is 1) # false
+print(10 is 10.0) # false
+print([] is []) # false
+'''
+# For Loops
+
+#for items in 'Zero to Mastery':
+ # print(items)
+
+'''
+for i in range(1,10):
+  print(i)
+
+for i in range(1,5):
+  for n in ['a', 'b', 'c', 'd', 'e']:
+    for o in ["x","y","z"]:
+      print(i , n, o)
+'''
+
+
+# iterable

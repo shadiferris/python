@@ -746,5 +746,23 @@ print(counter)
 '''
 
 
+# Range 
+'''
+for number in range(0, 10):
+  print(number)
+
+for number in range(0, 10, 2):
+  print(number)
+
+for number in range(10, 0, -2):
+  print(number)
+
+
+#convert a range of 1-10 into a list twice:
+for number in range(2):
+  print(list(range(10)))
+
+'''
+
 
 

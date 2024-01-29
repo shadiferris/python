@@ -662,7 +662,7 @@ print(not(1 == 1))
 '''
 
 # Exercise Logical operations
-
+'''
 is_magician = True
 is_expert = False 
 
@@ -672,7 +672,7 @@ elif is_magician and not is_expert:
   print("at least your getting there")
 elif not is_magician:
   print("you need magic powers")
-
+'''
 
 
 # is vs ==
@@ -707,3 +707,44 @@ for i in range(1,5):
 
 
 # iterable
+
+# these objects are iterable:
+# Lists, Dictionary, Tuples, Sets, Strings
+'''
+user = {
+'name': 'golem',
+'age': 5005,
+'can_swim': False
+}
+
+for i in user.items():
+  print(i)
+
+for i in user.values():
+  print(i)
+
+for i in user.keys():
+  print(i)
+
+
+for key, value in user.items():
+  print(value, key)
+
+'''
+
+#Exercise: Tricky Counter
+# https://github.com/aneagoie/ztm-python-course-exercises
+'''
+my_list = [1,2,3,4,5,6,7,8,9,10]
+
+counter = 0
+
+for item in my_list:
+  counter = counter + item
+
+print(counter)
+'''
+
+
+
+

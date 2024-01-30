@@ -743,8 +743,8 @@ for item in my_list:
   counter = counter + item
 
 print(counter)
+ 
 '''
-
 
 # Range 
 '''
@@ -762,6 +762,46 @@ for number in range(10, 0, -2):
 for number in range(2):
   print(list(range(10)))
 
+'''
+
+# Enumerate
+'''
+for i,char in enumerate('hello'):
+  print(i, char)
+
+for i,char in enumerate((1,2,3)):
+  print(i, char)
+
+for i,char in enumerate([1,2,3]):
+  print(i, char)
+
+for i,char in enumerate(list(range(10))):
+  print(i, char)
+  if char == 5:
+    print(f'Index of char is: {i}')
+
+'''
+
+#While loops
+'''
+i = 0
+
+while i < 10:
+  print(i)
+  #i = i +1
+  i += 1
+  #break
+else:
+  print("done with all the work")
+'''
+
+#While loops 2
+'''
+while True:
+  response = input("what do you want to do? ")
+  if (response == "bye"):
+    break
+  
 '''
 
 

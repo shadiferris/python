@@ -805,4 +805,73 @@ while True:
 '''
 
 
+# break, continue, pass
+'''
+my_list = [1,2,3]
+
+for items in my_list:
+  print(my_list)
+  #break
+  continue
+
+
+
+i = 0
+while i < len(my_list):
+  print(my_list[i])
+  i += 1
+  #break
+  continue
+'''
+
+# our first GUI
+
+#Exercise!
+#Display the image below to the right hand side where the 0 is going to be ' ', and the 1 is going to be '*'. This will reveal an image!
+# https://www.geeksforgeeks.org/gfact-50-python-end-parameter-in-print/
+'''
+picture = [
+  [0,0,0,1,0,0,0],
+  [0,0,1,1,1,0,0],
+  [0,1,1,1,1,1,0],
+  [1,1,1,1,1,1,1],
+  [0,0,0,1,0,0,0],
+  [0,0,0,1,0,0,0]
+]
+
+#for row in picture:
+#  for pixel in row:
+#    if (pixel == 1):
+#      print('*', end='')
+#    else:# (pixel == 0):
+#      print(' ', end='')
+#  print(' ') # need a new line after ever row
+
+fill = "*"
+empty = " "
+for row in picture:
+  for pixel in row:
+    if (pixel == 1):
+      print(fill, end='')
+    else:# (pixel == 0):
+      print(empty, end='')
+  print(' ') # need a new line after ever row
+
+
+'''
+# Exercise : Find Duplicates
+# Find from the list which items are duplicates
+
+'''
+some_list = ['a', 'b', 'c', 'b', 'd', 'm', 'n', 'n']
+
+duplicates =[]
+for value in some_list:
+  if some_list.count(value) > 1:
+    #if value not in duplicates: # lists single value in list.
+      duplicates.append(value)
+   
+print(duplicates)
+'''
+
 

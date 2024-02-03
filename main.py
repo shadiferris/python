@@ -860,18 +860,62 @@ for row in picture:
 
 '''
 # Exercise : Find Duplicates
-# Find from the list which items are duplicates
-
 '''
 some_list = ['a', 'b', 'c', 'b', 'd', 'm', 'n', 'n']
 
 duplicates =[]
 for value in some_list:
   if some_list.count(value) > 1:
-    #if value not in duplicates: # lists single value in list.
+    if value not in duplicates: # lists single value in list.
       duplicates.append(value)
    
 print(duplicates)
+
+'''
+
+#Functions
+'''
+def print_hello():
+  print("hellooo!")
+
+
+print_hello()
+
+'''
+
+#Arguments vs Parameters
+'''
+#parameters
+def print_hello(name, age):
+  print(f"hellooo! {name} {age}")
+
+
+#arguments (aka -  "call" or "invoke")
+print_hello("Shadi", "36")
+print_hello("Milia", "35")
+print_hello("Frank", "5")
+print_hello("Joseph", "4")
+print_hello("Lucas", "2")
 '''
 
 
+# Defult parameters and keyword arguments
+'''
+
+def print_hello(name, age):
+  print(f"hellooo! {name} {age}")
+
+
+#positional arguments (aka -  "call" or "invoke")
+print_hello("Shadi", "36")
+
+#keywork arguments (not good practise)
+#print_hello(age='23', name='slim')
+
+def print_hello_default(name="slim shady", age="infinite"):
+  print(f"hellooo! {name} {age}")
+
+
+print_hello_default()
+
+'''

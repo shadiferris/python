@@ -998,13 +998,53 @@ print(test.__doc__)
 '''
 def is_odd_or_even(num):
   #num = int(input("pick a number? "))
-  return num % 2 == 0
+  return num % 2 != 0
 
 
 print(is_odd_or_even(5))
 '''
 
+# *args and **kwargs
+'''
+def super_func(*args, **kwargs):
+  #print(args)
+  #print(kwargs)
+  total = 0
+  for items in kwargs.values():
+    total += items
+
+  return sum(args) + total
 
 
+print(super_func(1,2,3,4,5, num1=5, num2=10))
+'''
+
+# Exercise Functions (my answer)
+# Highest Even: Write a function to find the highest even number from the list.
+'''
+def highest_even(*args):
+  new_list = []
+  for i in args:
+    if i % 2 == 0:
+      new_list.append(i)
+  
+  new_list.sort(reverse=True)
+  return new_list[0]
 
 
+print(highest_even(4,5,7,1,10,11,22))
+'''
+# Exercise Functions (course answer)
+# Highest Even: Write a function to find the highest even number from the list.
+'''
+
+def highest_even(li):
+    evens = []
+    for item in li:
+        if not item % 2 and item not in evens:
+            evens.append(item)
+    return max(evens)
+
+
+print(highest_even([10, 2, 3, 4, 8, 11]))
+'''

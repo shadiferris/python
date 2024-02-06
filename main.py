@@ -919,3 +919,92 @@ def print_hello_default(name="slim shady", age="infinite"):
 print_hello_default()
 
 '''
+
+# Return
+#
+# Functions should do something really well
+# return something
+'''
+def sum(num1, num2):
+  return num1 + num2
+  #print(total)
+
+#total = sum(10,20)
+#print(total)
+#print(sum(10,total))
+
+
+
+no1 = int(input("hi, please provide one number for addition? "))
+no2 = int(input("please provide another number? "))
+
+total = sum(no1, no2)
+print(f"the total of the two input numbers is {total}")
+print(type(total))
+'''
+
+# Function Tesla exercise
+
+#1. Wrap the above code in a function called checkDriverAge(). Whenever you call this function, you will get prompted for age. 
+# Notice the benefit in having checkDriverAge() instead of copying and pasting the function everytime?
+ 
+'''
+#def checkDriverAge():
+  age = input("What is your age? ")
+  if int(age) < 18:
+    print("Sorry, you are too young to drive this car. Powering off")
+  elif int(age) > 18:
+    print("Powering On. Enjoy the ride!");
+  elif int(age) == 18:
+    print("Congratulations on your first year of driving. Enjoy the ride!")
+
+
+#checkDriverAge()
+
+#2 Instead of using the input(). Now, make the checkDriverAge() function accept an argument of age, so that if you enter:
+#checkDriverAge(92);
+#it returns "Powering On. Enjoy the ride!"
+#also make it so that the default age is set to 0 if no argument is given.
+def checkDriverAge(age=0):
+    if int(age) < 18:
+        print("Sorry, you are too young to drive this car. Powering off")
+    elif int(age) > 18:
+        print("Powering On. Enjoy the ride!");
+    elif int(age) == 18:
+        print("Congratulations on your first year of driving. Enjoy the ride!")
+checkDriverAge(92)
+
+'''
+
+# Methods vs Functions
+# Library references - https://docs.python.org/3/library/index.html
+
+
+# Docstrings
+'''
+def test(a):
+  
+  #Info: this function tests and print param a
+  
+  print(a)
+
+#help(test)
+# gives information about the function!!!
+print(test.__doc__)
+'''
+
+
+# Clean code
+'''
+def is_odd_or_even(num):
+  #num = int(input("pick a number? "))
+  return num % 2 == 0
+
+
+print(is_odd_or_even(5))
+'''
+
+
+
+
+

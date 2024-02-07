@@ -1048,3 +1048,69 @@ def highest_even(li):
 
 print(highest_even([10, 2, 3, 4, 8, 11]))
 '''
+
+#Walrus Operator
+#  :=
+'''
+a = 'Helllooooooo!!!'
+
+if ((n := len(a)) >= 10):
+  print(f"Too long {n} elements")
+
+while ((n := len(a)) >= 1):
+  print(n)
+  a = a[:-1]
+
+print(a)
+'''
+
+# Scope - what variables do i have access too?
+# scope rule
+# https://www.geeksforgeeks.org/global-local-variables-python/
+'''Python Global variables are those which are not defined inside any function and have a global scope whereas Python local variables are those which are defined inside a function and their scope is limited to that function only.
+
+Scope precidence:
+1. Start with local
+2. Parent Local
+3. Global
+4. Build in python function
+
+'''
+
+# Global Keyword
+# using global variables within functions
+'''
+total = 0
+
+def count():
+  global total
+  total += 1
+  return total
+
+count()
+count()
+print(count())
+'''
+
+# Nonlocal Keywords
+def outer():
+    x = "local"
+    def inner():
+        nonlocal x
+        x = "nonlocal1"
+        print("inner:", x)
+    inner()
+    print("outer:", x)
+outer()
+
+#1 - start with local
+#2 - Parent local?
+#3 - global
+#4 - built in python functions
+
+# Exercise : Imposter syndrome
+
+
+
+
+

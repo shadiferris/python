@@ -1093,6 +1093,8 @@ print(count())
 '''
 
 # Nonlocal Keywords
+
+'''
 def outer():
     x = "local"
     def inner():
@@ -1102,13 +1104,71 @@ def outer():
     inner()
     print("outer:", x)
 outer()
-
+'''
 #1 - start with local
 #2 - Parent local?
 #3 - global
 #4 - built in python functions
 
 # Exercise : Imposter syndrome
+
+
+
+
+# Object Oriented Programming
+'''
+
+class BigObject: # Class
+  pass
+
+
+obj1 = BigObject() # Instanciate
+
+print(type(None))
+print(type(True))
+print(type(5))
+print(type(5.5))
+print(type('hi'))
+print(type([]))
+print(type(()))
+print(type({}))
+print(type(obj1))
+'''
+
+# Creating Our own Objects
+'''
+class PlayerCharacter: # class
+  def __init__(self, name, age):
+    self.name = name
+    self.age = age
+
+
+  def run(self):
+    print("run1")
+    return "done"
+
+player1 = PlayerCharacter("slim", 22)
+player2 = PlayerCharacter("shady", 50)
+
+
+print(player1)
+print(player2)
+
+print(player1.name)
+print(player2.name)
+
+print(player1.age)
+print(player2.age)
+
+print(player1.run())
+
+'''
+
+
+
+
+
+
 
 
 

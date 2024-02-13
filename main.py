@@ -617,8 +617,7 @@ else:
 print("end")
 '''
 
-
-# truthy or Falsy 
+# truthy or Falsy
 # https://stackoverflow.com/questions/39983695/what-is-truthy-and-falsy-how-is-it-different-from-true-and-false
 '''
 print(bool(5)) # True
@@ -626,7 +625,6 @@ print(bool("hello")) # True
 print(bool("")) # False
 print(bool(0)) # False
 '''
-
 
 #Ternary Operator
 # or conditional expressions
@@ -674,7 +672,6 @@ elif not is_magician:
   print("you need magic powers")
 '''
 
-
 # is vs ==
 '''
 print(True == 1) # True
@@ -693,8 +690,7 @@ print([] is []) # false
 # For Loops
 
 #for items in 'Zero to Mastery':
- # print(items)
-
+# print(items)
 '''
 for i in range(1,10):
   print(i)
@@ -704,7 +700,6 @@ for i in range(1,5):
     for o in ["x","y","z"]:
       print(i , n, o)
 '''
-
 
 # iterable
 
@@ -746,7 +741,7 @@ print(counter)
  
 '''
 
-# Range 
+# Range
 '''
 for number in range(0, 10):
   print(number)
@@ -803,7 +798,6 @@ while True:
     break
   
 '''
-
 
 # break, continue, pass
 '''
@@ -898,7 +892,6 @@ print_hello("Joseph", "4")
 print_hello("Lucas", "2")
 '''
 
-
 # Defult parameters and keyword arguments
 '''
 
@@ -945,9 +938,8 @@ print(type(total))
 
 # Function Tesla exercise
 
-#1. Wrap the above code in a function called checkDriverAge(). Whenever you call this function, you will get prompted for age. 
+#1. Wrap the above code in a function called checkDriverAge(). Whenever you call this function, you will get prompted for age.
 # Notice the benefit in having checkDriverAge() instead of copying and pasting the function everytime?
- 
 '''
 #def checkDriverAge():
   age = input("What is your age? ")
@@ -979,7 +971,6 @@ checkDriverAge(92)
 # Methods vs Functions
 # Library references - https://docs.python.org/3/library/index.html
 
-
 # Docstrings
 '''
 def test(a):
@@ -992,7 +983,6 @@ def test(a):
 # gives information about the function!!!
 print(test.__doc__)
 '''
-
 
 # Clean code
 '''
@@ -1093,7 +1083,6 @@ print(count())
 '''
 
 # Nonlocal Keywords
-
 '''
 def outer():
     x = "local"
@@ -1111,9 +1100,6 @@ outer()
 #4 - built in python functions
 
 # Exercise : Imposter syndrome
-
-
-
 
 # Object Oriented Programming
 '''
@@ -1164,13 +1150,159 @@ print(player1.run())
 
 '''
 
+# Attributes and Methods
+'''
+class PlayerCharacter: # class
+  #Class object attribute
+  membership = True
+  
+  
+  def __init__(self, name, age):
+    if (self.membership):
+      self.name = name
+      self.age = age
+
+
+  def run(self):
+    print("run1")
+    return "done"
+  
+  def shout(self):
+    print(f'My name is {self.name}')
+    
+
+player1 = PlayerCharacter("slim", 22)
+player2 = PlayerCharacter("shady", 50)
+
+print(player1.membership)
+print(player2.membership)
+
+print(player1.shout())
+
+#help(dict)
+#print(player1)
+#print(player2)
+
+#print(player1.name)
+#print(player2.name)
+
+#print(player1.age)
+#print(player2.age)
+
+#print(player1.run())
+
+'''
+
+# __init__
+'''
+class PlayerCharacter: # class
+  #Class object attribute
+  membership = True
+
+
+  def __init__(self, name="Shadi", age=0):
+    if (age > 18):
+      self.name = name
+      self.age = age
+      print("You are old enough!!")
+
+    else:
+      self.name = name
+      self.age = age
+      print("Age is too young!!!")
+      
+
+  def run(self):
+    print("run1")
+    return "done"
+
+  def shout(self):
+    print(f'My name is {self.name}')
+
+
+player1 = PlayerCharacter("slim", 11)
+player2 = PlayerCharacter("shady", 50)
+
+print(player1.age)
+print(player2.age)
+
+print(player2.membership)
+
+'''
+
+#Exercise - Given the below class:
+'''
+class Cat:
+    species = 'mammal'
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+    def oldest_cat(*args):
+      return max(args)
+
+# 1 Instantiate the Cat object with 3 cats
+
+cat1 = Cat("Frank", 6)
+cat2 = Cat("Joseph", 4)
+cat3 = Cat("Lucas", 2)
+
+print(cat1.name)
+print(cat1.age)
+
+print(cat2.name)
+print(cat2.age)
+
+print(cat3.name)
+print(cat3.age)
+
+# 2 Create a function that finds the oldest cat
+def oldest_cat(*args):
+  return max(args)
 
 
 
+# 3 Print out: "The oldest cat is x years old.". x will be the oldest cat age by using the function in #2
+
+print(f"The oldest cat is {Cat.oldest_cat(cat1.age,cat2.age,cat3.age)} years old.")
+
+'''
 
 
+# @classmethod and @staticmethod
+# https://www.makeuseof.com/tag/python-instance-static-class-methods/
+'''
+
+class PlayerCharacter:  # class
+  #Class object attribute
+  membership = True
+
+  def __init__(self, name="Shadi", age=0):
+    if (age > 18):
+      self.name = name
+      self.age = age
+      print("You are old enough!!")
+
+  def run(self):
+    print("run1")
+    return "done"
+
+  def shout(self):
+    print(f'My name is {self.name}')
+    return self.age
+
+  @classmethod
+  def adding_things(cls, num1, num2):
+    return num1 + num2
+  
+  @staticmethod
+  def adding_things2(cls, num1, num2):
+    return num1 + num2
 
 
+player1 = PlayerCharacter("slim", 30)
+player2 = PlayerCharacter("shady", 50)
 
+print(PlayerCharacter.adding_things(2, 23))
+'''
 
 

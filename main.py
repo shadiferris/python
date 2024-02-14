@@ -1270,8 +1270,8 @@ print(f"The oldest cat is {Cat.oldest_cat(cat1.age,cat2.age,cat3.age)} years old
 
 # @classmethod and @staticmethod
 # https://www.makeuseof.com/tag/python-instance-static-class-methods/
-'''
 
+'''
 class PlayerCharacter:  # class
   #Class object attribute
   membership = True
@@ -1290,6 +1290,9 @@ class PlayerCharacter:  # class
     print(f'My name is {self.name}')
     return self.age
 
+  def win(self):
+    return self
+
   @classmethod
   def adding_things(cls, num1, num2):
     return num1 + num2
@@ -1303,6 +1306,59 @@ player1 = PlayerCharacter("slim", 30)
 player2 = PlayerCharacter("shady", 50)
 
 print(PlayerCharacter.adding_things(2, 23))
-'''
 
+print(player1.win())
+'''
+# The 4 pillars of OOPs concepts in python are Inheritance, Polymorphism, Encapsulation, and Abstraction.
+
+# Encapsulation
+
+'''
+class PlayerCharacter:  # class
+  #Class object attribute
+  membership = True
+
+  def __init__(self, name="Shadi", age=0):
+    if (age > 18):
+      self.name = name
+      self.age = age
+      print("You are old enough!!")
+
+  def run(self):
+    print("run1")
+    return "done"
+
+  def speak(self):
+    print(f'My name is {self.name}, and I am {self.age} years old')
+
+player1 = PlayerCharacter("slim", 30)
+player2 = PlayerCharacter("shady", 50)
+
+print(player1.speak())
+'''
+# Abstraction
+
+'''
+class PlayerCharacter:  # class
+  #Class object attribute
+  membership = True
+
+  def __init__(self, name="Shadi", age=0):
+    if (age > 18):
+      self.name = name
+      self.age = age
+      print("You are old enough!!")
+
+  def run(self):
+    print("run1")
+    return "done"
+
+  def speak(self):
+    print(f'My name is {self.name}, and I am {self.age} years old')
+
+player1 = PlayerCharacter("slim", 30)
+player2 = PlayerCharacter("shady", 50)
+
+print(player1.speak())
+'''
 

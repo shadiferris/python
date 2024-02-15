@@ -1473,7 +1473,7 @@ print(wizard1.attack())
 
 '''
 # Exercise - Peter Everywhere
-
+'''
 class Pets():
   animals = []
   def __init__(self, animals):
@@ -1501,12 +1501,30 @@ class Sally(Cat):
   def sing(self, sounds):
       return f'{sounds}'
 
-#1 Add nother Cat
+#1 Add another Cat
+
+class DeeDee(Cat):
+  def sing(self, sounds):
+      return f'{sounds}'
+
 
 #2 Create a list of all of the pets (create 3 cat instances from the above)
 my_cats = []
 
+animal1 = Simon("Simon", 3)
+animal2 = Sally("Sally",4)
+animal3 = DeeDee("DeeDee",5)
 
+my_cats.append(animal3)
+my_cats.append(animal2)
+my_cats.append(animal1)
 
+#3 Instantiate the Pet class with all your cats use variable my_pets
 
+my_pets = Pets(my_cats)
+
+#4 Output all of the cats walking using the my_pets instance
+
+my_pets.walk()
+'''
 

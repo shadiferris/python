@@ -1312,8 +1312,8 @@ print(player1.win())
 # The 4 pillars of OOPs concepts in python are Inheritance, Polymorphism, Encapsulation, and Abstraction.
 
 # Encapsulation
-
 '''
+
 class PlayerCharacter:  # class
   #Class object attribute
   membership = True
@@ -1358,7 +1358,155 @@ class PlayerCharacter:  # class
 
 player1 = PlayerCharacter("slim", 30)
 player2 = PlayerCharacter("shady", 50)
+player1.name = "!!!"
+player1.speak = "Booooo"
+
+print(player1.speak)
+
+'''
+
+# Private vs Public Variables
+
+# there is no true private variables.
+# if you ad an underscore "_" infront of a variable, industry standard that its a private variable.
+# shouldnt be modified.
+'''
+class PlayerCharacter:  # class
+  #Class object attribute
+  membership = True
+
+  def __init__(self, name="Shadi", age=0):
+    if (age > 18):
+      self._name = name
+      self._age = age
+      print("You are old enough!!")
+
+  def run(self):
+    print("run1")
+    return "done"
+
+  def speak(self):
+    print(f'My name is {self._name}, and I am {self._age} years old')
+
+player1 = PlayerCharacter("slim", 30)
+player2 = PlayerCharacter("shady", 50)
+#player1.name = "!!!"
+#player1.speak = "Booooo"
 
 print(player1.speak())
 '''
+
+# inheritance
+'''
+class User:
+  def sign_in(self):
+    print("logged in")
+
+class Wizard(User):
+  def __init__(self, name, power):
+    self.name = name
+    self.power = power
+
+  def attach(self):
+    print(f'Attacking with power of {self.power}')
+
+class Archers(User):
+  def __init__(self, name, num_arrows):
+    self.name = name
+    self.num_arrows = num_arrows
+
+  def attach(self):
+    print(f'Attacking with arrows. Arrows left - {self.num_arrows} ')
+
+wizard1 = Wizard("Merlin", 50)
+archer1 = Archers("Robin Hood", 100)
+
+wizard1.attach()
+archer1.attach()
+
+
+print(isinstance(wizard1, Wizard)) # true/false
+print(isinstance(wizard1, User))
+
+'''
+
+# Polymorphism
+# many forms
+'''
+class User:
+  def sign_in(self):
+    print("logged in")
+
+  def attack(self):
+    print("do nothing")
+  
+class Wizard(User):
+  def __init__(self, name, power):
+    self.name = name
+    self.power = power
+
+  def attack(self):
+    User.attack(self)
+    print(f'Attacking with power of {self.power}')
+
+class Archers(User):
+  def __init__(self, name, num_arrows):
+    self.name = name
+    self.num_arrows = num_arrows
+
+  def attack(self):
+    print(f'Attacking with arrows. Arrows left - {self.num_arrows} ')
+
+wizard1 = Wizard("Merlin", 50)
+archer1 = Archers("Robin Hood", 100)
+
+#def player_attack(char):
+#  char.attack()
+
+#player_attack(wizard1)
+#player_attack(archer1)
+
+for char in [wizard1, archer1]:
+  char.attack()
+
+print(wizard1.attack())
+
+'''
+# Exercise - Peter Everywhere
+
+class Pets():
+  animals = []
+  def __init__(self, animals):
+      self.animals = animals
+
+  def walk(self):
+      for animal in self.animals:
+          print(animal.walk())
+
+class Cat():
+  is_lazy = True
+
+  def __init__(self, name, age):
+      self.name = name
+      self.age = age
+
+  def walk(self):
+      return f'{self.name} is just walking around'
+
+class Simon(Cat):
+  def sing(self, sounds):
+      return f'{sounds}'
+
+class Sally(Cat):
+  def sing(self, sounds):
+      return f'{sounds}'
+
+#1 Add nother Cat
+
+#2 Create a list of all of the pets (create 3 cat instances from the above)
+my_cats = []
+
+
+
+
 

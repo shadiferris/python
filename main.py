@@ -1705,7 +1705,6 @@ print(action_figure['name'])
 '''
 # Exercise - Extending List
 '''
-
 class SuperList(list):
 
     def __len__(self):
@@ -1719,8 +1718,74 @@ super_list1.append(5)
 print(super_list1[0])
 print(issubclass(SuperList, list))
 print(issubclass(list, object))
+
 '''
 
+# Multiple Inheritance
+
+'''
+class User():
+  def sign_in(self):
+    print("logged in")
+
+class Wizard(User):
+  def __init__(self, name, power):
+    self.name = name
+    self.power = power
+
+  def attack(self):
+    #User.attack(self)
+    print(f'Attacking with power of {self.power}')
+
+class Archers(User):
+  def __init__(self, name, arrows):
+    self.name = name
+    self.arrows = arrows
+
+  def attack(self):
+    print(f'Attacking with arrows. Arrows left - {self.arrows} ')
+
+  def run(self):
+    print("Run really fast")
+
+
+class HybridBorg(Wizard, Archers):
+  def __init__(self, name, power, arrows):
+    Archers.__init__(self, name, arrows)
+    Wizard.__init__(self, name, power)
+
+hb1 = HybridBorg('slim', 100, 200)
+print(hb1.run())
+#print(hb1.power())
+
+#print(hb1.arrows())
+'''
+
+# MRO - Method Resolution Order
+#http://www.srikanthtechnologies.com/blog/python/mro.aspx
+
+'''
+class A:
+  num = 10
+
+
+class B(A):
+  pass
+
+class C(A):
+  num = 1
+
+class D(B, C):
+  pass
+
+print(D.mro())
+print(D.num)
+print(B.num)
+print(C.num)
+'''
+
+#Functional Programming
+# https://en.wikipedia.org/wiki/History_of_programming_languages
 
 
 

@@ -1861,3 +1861,60 @@ print(reduce(accumulator, my_list, 10))
 print(my_list)
 '''
 
+# Exercise, MAP, Filter, zip reduce
+'''
+from functools import reduce
+
+#1 Capitalize all of the pet names and print the list
+my_pets = ['sisi', 'bibi', 'titi', 'carla']
+
+new_pet = [x.upper() for x in my_pets]
+print(new_pet)
+
+#---------
+
+def capitalize(string):
+    return string.upper()
+
+print(list(map(capitalize, my_pets)))
+
+
+#2 Zip the 2 lists into a list of tuples, but sort the numbers from lowest to highest.
+my_strings = ['a', 'b', 'c', 'd', 'e']
+my_numbers = [5,4,3,2,1]
+
+my_numbers.sort()
+print(my_numbers)
+
+print(list(zip(my_strings,my_numbers)))
+
+
+
+#3 Filter the scores that pass over 50%
+scores = [73, 20, 65, 19, 76, 100, 88]
+
+def pass_mark(item):
+  if item > 50:
+    return item
+
+print(list(filter(pass_mark,scores)))
+
+
+#4 Combine all of the numbers that are in a list on this file using reduce (my_numbers and scores). What is the total?
+
+
+new_list_here = scores + my_numbers
+print(new_list_here)
+
+def accumulator(acc, item):
+  print(acc, item)
+  return acc + item
+
+print(reduce(accumulator, new_list_here, 0))
+#---------
+def accumulator(acc, item):
+    return acc + item
+
+print(reduce(accumulator, (my_numbers + scores)))
+
+'''

@@ -1918,3 +1918,43 @@ def accumulator(acc, item):
 print(reduce(accumulator, (my_numbers + scores)))
 
 '''
+
+#lambda Expressions
+'''
+from functools import reduce
+
+my_list = [1,2,3]
+
+#def multiply_by2(item):
+#  return item * 2
+
+#def only_odd(item):
+#  return item % 2 != 0
+
+#def accumulator(acc, item):
+#  print(acc, item)
+#  return acc + item
+
+print(list(map(lambda item: item*2, my_list)))
+print(my_list)
+
+print(list(filter(lambda item: item % 2 != 0, my_list)))
+
+print(reduce(lambda acc ,item: acc + item, my_list, 0))
+
+'''
+# Exercise Lambda
+'''
+my_list = [5,4,3]
+
+#Square numbers in a list
+print(list(map(lambda item: item**2, my_list)))
+
+#list sorting
+
+a = [(0,2),(4,3),(9,8),(10,-1)]
+#sorting for the 1st index, ie the 3 in tuple below [(0,3)]  
+a.sort(key=lambda x: int(x[1]))
+print(a)
+
+'''

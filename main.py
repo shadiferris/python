@@ -1958,3 +1958,68 @@ a.sort(key=lambda x: int(x[1]))
 print(a)
 
 '''
+
+# List Comprehensions
+'''
+my_list = []
+comp_list = [char for char in "comprehension"]
+
+num_list = [nums for nums in range(1,10)]
+
+num_list_multiple_by_2 = [nums*2 for nums in range(1,10)]
+
+num_list_multiple_by_2_even_num = [nums**2 for nums in range(1,10) if nums % 2 == 0]
+
+for char in "helloworld":
+  my_list.append(char)
+
+
+print(my_list)
+print(comp_list)
+
+print(num_list)
+print(num_list_multiple_by_2)
+
+print(num_list_multiple_by_2_even_num)
+
+'''
+
+# Set Comprehensions
+'''
+set_list = {char for char in "comprehension"}
+num_list = {nums for nums in range(1,10)}
+
+print(num_list)
+print(set_list)
+
+'''
+# Dict Comprehensions
+'''
+simple_dict = {
+'a':1,
+'b':2  
+}
+
+dict_list = {key:value**2 for key,value in simple_dict.items() }
+
+dict_list_2 = {num:num**2 for num in [1,2,3] }
+
+print(dict_list)
+print(dict_list_2)
+
+'''
+# Exercise: Comprehension
+'''
+some_list = ['a', 'b', 'c', 'b', 'd', 'm', 'n', 'n']
+
+#duplicates = []
+#for value in some_list:
+#    if some_list.count(value) > 1:
+#        if value not in duplicates:
+#            duplicates.append(value)
+
+duplicates = list(set([nums for nums in some_list if some_list.count(nums) > 1 ]))
+
+print(duplicates)
+'''
+

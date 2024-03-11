@@ -2023,3 +2023,46 @@ duplicates = list(set([nums for nums in some_list if some_list.count(nums) > 1 ]
 print(duplicates)
 '''
 
+# Decorators
+'''
+def hello():
+  print("Helllloooooo!")
+
+
+hello()
+'''
+#Higher Order Function HOC
+
+#a function the runs another function within it
+'''
+
+
+def greet2():
+  def func():
+    #return 5
+    print("this is it")
+  return func()
+
+greet2()
+'''
+'''
+def my_decorator(func):
+  def wrap_func():
+    print("*****")
+    func()
+    print("*****")
+  return wrap_func
+
+@my_decorator
+def hello():
+  print("Helllloooooo!")
+
+@my_decorator
+def bye():
+  print("see ya later")
+
+hello()
+bye()
+
+'''
+

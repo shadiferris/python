@@ -2047,22 +2047,70 @@ greet2()
 '''
 '''
 def my_decorator(func):
-  def wrap_func():
+  def wrap_func(*args, **kwargs):
     print("*****")
-    func()
+    func(*args, **kwargs)
     print("*****")
   return wrap_func
 
 @my_decorator
-def hello():
-  print("Helllloooooo!")
+def hello(greeting):
+  print(greeting)
 
-@my_decorator
-def bye():
-  print("see ya later")
+hello('Hiiii')
 
-hello()
-bye()
+#@my_decorator
+#def bye():
+#  print("see ya later")
+
+#bye()
+
+'''
+
+#Why do we need decorators
+#https://replit.com/@aneagoie/decorators
+'''
+from time import time
+def performance(fn):
+  def wrapper(*args, **kwargs):
+    t1 = time()
+    result = fn(*args, **kwargs)
+    t2 = time()
+    print(f'took {t2-t1}')
+    return result
+  return wrapper
+
+@performance
+def long_time():
+    for i in range(100000):
+        i*5
+
+long_time()
+
+'''
+
+#Decorator Exercise
+# Create an @authenticated decorator that only allows the function to run is user1 has 'valid' set to True:
+'''
+user1 = {
+    "name": "Sorna",
+    "valid": True,  # changing this will either run or not run the message_friends function.
+}
+
+def authenticated(fn):
+    # code here
+    def wrapper(*args, **kwargs):
+        if args[0]["valid"]:
+            return fn(*args, **kwargs)
+        else:
+            return print("invalid user")
+    return wrapper
+
+@authenticated
+def message_friends(user):
+    print("message has been sent")
+
+message_friends(user1)
 
 '''
 

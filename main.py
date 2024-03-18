@@ -2114,3 +2114,59 @@ message_friends(user1)
 
 '''
 
+# Errors in Python
+# exceptions - https://docs.python.org/3/library/exceptions.html
+
+# Error Handling
+#
+# Built in exception - https://docs.python.org/3/library/exceptions.html
+
+'''
+while True:
+  try:
+    age = int(input("what is your age? "))
+    10/age
+
+  except ValueError:
+    print("please enter a number!!!")
+  except ZeroDivisionError:
+    print("number cannot be zero!!!")
+  else:
+    print("thanks you")
+    break
+'''
+
+#Error handling 2
+'''
+def sum(num1, num2):
+  try:
+    return num1 + num2
+  except TypeError as err:
+    print(err)
+
+
+print(sum("1", 2))
+'''
+#Exercise: Error Handling
+'''
+while True:
+  try:
+    age = int(input("what is your age? "))
+    10/age
+
+  except ValueError:
+    print("please enter a number!!!")
+    continue
+  except ZeroDivisionError:
+    print("number cannot be zero!!!")
+    continue 
+  else:
+    print("thanks you")
+    break
+
+  finally:
+    print("ok, Im finally done")
+'''
+
+
+

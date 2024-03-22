@@ -2235,3 +2235,44 @@ def long_time2():
 long_time2()
 print()
 '''
+
+#under the hood Generators
+#
+'''
+def special_for(iterable):
+  iterable = iter(iterable)
+  while True:
+    try:
+      print(iterable)
+      print(next(iterable))
+    
+    except StopIteration:
+      break
+
+special_for([1,2,3])
+'''
+# create our own range generator with new class MyGen
+
+'''
+class MyGen():
+  current = 0
+  def __init__(self, first, last):
+    self.first = first
+    self.last = last
+
+  def __iter__(self):
+    return self
+
+  def __next__(self):
+    if MyGen.current < self.last:
+      num = MyGen.current
+      MyGen.current += 1
+      return num
+    raise StopIteration
+    
+
+gen = (MyGen(0,100))
+for i in gen:
+  print(i)
+
+  '''

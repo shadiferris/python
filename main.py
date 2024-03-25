@@ -2166,8 +2166,8 @@ while True:
 
   finally:
     print("ok, Im finally done")
-'''
 
+'''
 #Generators
 '''
 range(100)
@@ -2181,8 +2181,8 @@ def make_list(num):
 
 new_li = make_list(4)
 print(new_li)
-'''
 
+'''
 #Generators 2
 # iterable - something to loop over and actions in between.
 '''
@@ -2276,3 +2276,22 @@ for i in gen:
   print(i)
 
   '''
+
+# Exercise : Fibanacci Numbers
+'''
+def fib(num):
+  a = 0
+  b = 1
+  for i in range(num):
+    yield a
+    temp = a
+    a = b 
+    b = temp + b
+    
+for x in fib(10):
+  print(x)
+'''
+
+
+
+

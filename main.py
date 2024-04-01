@@ -2290,8 +2290,5 @@ def fib(num):
     
 for x in fib(10):
   print(x)
+
 '''
-
-
-
-

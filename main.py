@@ -2300,7 +2300,7 @@ for x in fib(10):
 
 # Modules in Python
 # Packaged codes
-
+'''
 import utility
 
 from utility import multiply, divide
@@ -2319,3 +2319,4 @@ if __name__ == '__main__':
   print(divide(4,3))
 
   print(__name__)
+'''

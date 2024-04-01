@@ -2292,3 +2292,30 @@ for x in fib(10):
   print(x)
 
 '''
+
+# 100 Exercises 
+# https://github.com/darkprinx/break-the-ice-with-python
+# including solutions
+
+
+# Modules in Python
+# Packaged codes
+
+import utility
+
+from utility import multiply, divide
+import shopping.more_shopping.shopping_cart
+from shopping.more_shopping.shopping_cart import buy
+
+if __name__ == '__main__':
+  print(utility.multiply(2,3))
+  #print(shopping.more_shopping.shopping_cart)
+  print(shopping.more_shopping.shopping_cart.buy('apple'))
+
+  #print(shopping.more_shopping.shopping_cart)
+  print(buy('oranges'))
+
+  print(multiply(3,3))
+  print(divide(4,3))
+
+  print(__name__)

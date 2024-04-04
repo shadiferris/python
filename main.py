@@ -2320,3 +2320,31 @@ if __name__ == '__main__':
 
   print(__name__)
 '''
+
+# Python Built-in Modules 1
+
+# Python Module Index https://docs.python.org/3/py-modindex.html
+
+'''
+import random
+
+#help(random)
+#print(dir(random))
+print(random.random())
+
+print(random.randint(0,10))
+
+print(random.choice([1,2,3,4,5]))
+
+mylist = [1,2,3,4,5]
+random.shuffle(mylist)
+print(mylist)
+
+'''
+
+# Python Built-in Modules 1
+
+import sys
+
+print(sys)
+sys.argv

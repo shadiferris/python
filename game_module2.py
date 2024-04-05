@@ -1,9 +1,9 @@
 from random import randint
 import sys
 
-first = sys.argv[1]
+first = int(sys.argv[1])
 
-last = sys.argv[2]
+last = int(sys.argv[2])
 
 answer = randint(first, last)
 

@@ -11,8 +11,8 @@ answer = randint(first, last)
 
 while True:
     try:
-        print(answer)
-        guess = int(input(f"Guess a number between {first} and {last} "))
+        print(f" answer is {answer}")
+        guess = int(input(f"Guess a number between {first} and {last}?  "))
         if first < guess < last:
           #print("things are working")
           if answer == guess:

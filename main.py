@@ -2352,7 +2352,11 @@ sys.argv
 '''
 
 # Exercise Guessing Game:
-
+# running the sys.argv arguments from a file.. 
+# example
+# >> python3 guess_game.py 0 100
+# the 0 and 100 are now the range
+'''
 from random import randint
 import sys
 
@@ -2366,7 +2370,7 @@ answer = randint(first, last)
 
 while True:
     try:
-        print(answer)
+        print(f" answer is {answer}")
         guess = int(input(f"Guess a number between {first} and {last} "))
         if first < guess < last:
           #print("things are working")
@@ -2382,3 +2386,5 @@ while True:
     except ValueError:
         print("please enter a number")
         continue
+        
+'''

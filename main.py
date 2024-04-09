@@ -2392,3 +2392,35 @@ while True:
 # Python Package Index
 # Shared Librarys by others
 # https://pypi.org/
+
+# pipenv
+# virtualenv
+# check directory structure 
+# /Users/shadiferris/Desktop/Shadi/python/project/python
+
+# Useful Modules
+# https://docs.python.org/3/py-modindex.html
+
+# collection
+'''
+#from collections import Counter,defaultdict,OrderedDict
+
+#list = [1,2,3,4,4,5,6,1,2,3]
+#sentence = "blah blah this is incredible!!!"
+#print(Counter(list))
+#print(Counter(sentence))
+
+#dict = defaultdict(lambda: 5, {'a':1, 'b': 2 })
+
+#print(dict['c'])
+
+#d1 = OrderedDict()
+#d1["a"] = 1
+#d1["b"] = 2
+
+#d2 = OrderedDict()
+#d2["b"] = 2
+#d2["a"] = 1
+
+#print(d2 == d1)
+'''

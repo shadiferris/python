@@ -2424,3 +2424,39 @@ while True:
 
 #print(d2 == d1)
 '''
+
+# Module 2
+
+# https://stackoverflow.com/questions/176011/python-list-vs-array-when-to-use
+'''
+import datetime
+import time
+from array import array
+
+print(datetime.time())
+print(datetime.time(5,45,2))
+print(datetime.date.today())
+
+arr = array("i", [1,2,3])
+print(arr)
+print(arr[0])
+
+'''
+# Python Debugger
+
+# https://docs.python.org/3/library/pdb.html
+'''
+import pdb
+
+def add(num1, num2):
+    pdb.set_trace()
+    return num1 + num2
+
+print(add(1, 4))
+'''
+
+
+
+
+
+

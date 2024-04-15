@@ -2455,8 +2455,35 @@ def add(num1, num2):
 print(add(1, 4))
 '''
 
+#working with files
+'''
+my_file = open('test.txt')
+
+#print(my_file)
+#print(my_file.read())
+
+print(my_file.readline())
+print(my_file.readline())
+
+print(my_file.readlines())
 
 
+my_file.close()
 
+'''
+
+#read, write, append
+# mode = r is to read by default
+# mode = r+ is to write to file
+# mode = a is to append to the end of the file
+
+'''
+with open('new_file.txt', mode='a') as my_file:
+    text = my_file.write('hey it\' me !!!') 
+    print(text)
+
+    text = my_file.write(':)')
+    print(text)
+'''
 
 

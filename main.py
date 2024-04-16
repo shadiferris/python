@@ -2486,4 +2486,36 @@ with open('new_file.txt', mode='a') as my_file:
     print(text)
 '''
 
+#file path
+#  https://docs.python.org/3/library/pathlib.html
 
+
+# File IO error
+'''
+try:
+  with open('new_file.txt', mode='x') as my_file:
+    print(my_file.read())
+except FileNotFoundError as err:
+  print("file does not exist")
+  raise err
+except IOError as err:
+  print("IO ERROR")
+  raise err
+
+'''
+
+# Exercise: Translator
+'''
+from translate import Translator
+
+translator= Translator(to_lang="ja")
+
+with open('frost_poem.txt', mode='r') as my_file:
+    text = my_file.read() 
+    #print(text)
+    translation = translator.translate(text)
+    with open('frost-poem-ja.txt', mode='w') as my_file2:
+       my_file2.write(translation)
+    print(translation)
+
+'''

@@ -2519,3 +2519,45 @@ with open('frost_poem.txt', mode='r') as my_file:
     print(translation)
 
 '''
+
+# Regular Expression
+'''
+import re
+
+pattern = re.compile('this')
+string = "search this inside of this text"
+
+#print('search' in string)
+a = (re.search('this', string))
+print(a.span())
+print(a.start())
+print(a.end())
+print(a.group())
+
+
+a = pattern.search(string)
+b = pattern.findall(string)
+c = pattern.fullmatch(string)
+d = pattern.match(string)
+
+print(a)
+print(b)
+print(c)
+print(d)
+
+'''
+
+
+# regular expression 2
+# import re --- https://www.w3schools.com/python/python_regex.asp
+# useful tool - https://regex101.com/
+
+'''
+import re
+
+
+txt = "The rain in Spain"
+x = re.search("^The.*Spain$", txt) 
+
+print(x)
+'''

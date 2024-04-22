@@ -2561,3 +2561,56 @@ x = re.search("^The.*Spain$", txt)
 
 print(x)
 '''
+
+#regular expressions 3
+
+'''
+import re
+
+pattern = re.compile(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)")
+string = "shadi@test.com"
+
+
+
+a = pattern.search(string)
+b = pattern.findall(string)
+c = pattern.fullmatch(string)
+d = pattern.match(string)
+
+print(a)
+print(b)
+print(c)
+print(d)
+
+'''
+
+# Exercise - regex
+'''
+import re
+
+# create a password validation script
+# password has to be at least 8 char long
+# contains any sort letters, number and these special char !@#$%^&+=
+# and has to end in a number
+
+password = input("what is your password? ")
+
+pattern = re.compile(r"[A-Za-z0-9!@#$%^&+=]{8,}[0-9]")
+#string = "password"
+
+a = pattern.search(password)
+b = pattern.findall(password)
+c = pattern.fullmatch(password)
+d = pattern.match(password)
+
+if c != None:
+    print("password accepted")
+else:
+    print("no good")    
+    
+#print(a)
+#print(b)
+#print(c)
+#print(d)
+
+'''

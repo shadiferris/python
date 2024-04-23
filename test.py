@@ -1,32 +1,15 @@
-import pandas as pd
-import csv
-import sys
-import numpy as np
+import unittest
+import main
 
-#header = ("ID", "Date")
+class TestMain(unittest.TestCase):
+    def test_do_stuff(self):
+        test_param = 10
+        result = main.do_stuff(test_param)
+        self.assertEqual(result, 15)
 
-#df = csv.reader(open('/Users/shadiferris/Desktop/python/datecsv.csv', 'r'), delimiter=",")
+    def test_do_stuff2(self):
+        test_param = "abcdef"
+        result = main.do_stuff(test_param)
+        self.assertTrue(isinstance(result, ValueError))
 
-with open('/Users/shadiferris/Desktop/python/datecsv.csv') as csvfile:
-    readCSV = csv.reader(csvfile, delimiter=',')
-    for row in readCSV:
-        print(row)
-        #print(row[0])
-        #print(row[0],row[1],row[2],)
-
-d1 = raw_input('Enter date - ')
-
-for row in readCSV:
-    #if current rows 2nd value is equal to input, print that row
-        if d1 == row[1]:
-	print row[0]
-#d1 = int(row[0)]
-#df = csv.reader(open('/Users/shadiferris/Desktop/python/datecsv.csv', 'r'), delimiter=",")
-
-#d2 = raw_input('Enter another  date - ')
-
-#for row in mylist:
- # if d2 == row[1]:
-        #print row[0]
-#d2 = int(row[0])
-#print(int(d2(row[0]) - d1(row[0])))
+unittest.main()

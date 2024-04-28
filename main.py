@@ -2617,7 +2617,7 @@ else:
 
 
 # Testing Introduction
-
+'''
 def do_stuff(num):
   try:
     return int(num) + 5
@@ -2627,5 +2627,23 @@ def do_stuff(num):
 
 
 #print(do_stuff(10))
+'''
+# writing unit tests
+def do_stuff(num=0):
+  try:
+    if num:
+      return int(num) + 5
+    elif num == 0:
+      return int(num) + 5
+    else:
+      return "please enter number!!"
+  except ValueError as err:
+    return err
 
 
+
+#print(do_stuff(10))
+
+# writing unit tests
+#
+# python3 -m unittest -v

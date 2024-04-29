@@ -2672,7 +2672,8 @@ while True:
         print('please enter a number')
         continue
 '''
-
+#my function conversion
+'''
 def num_answer(num1,num2):
     answer = randint(num1, num2)
     return answer
@@ -2681,17 +2682,41 @@ answer = num_answer(1, 10)
 
 def guess():
   while True:
-     try:
-        print(answer)
-        guess = int(input('guess a number 1~10:  '))
-        if  0 < guess < 11:
-           if guess == answer:
-              print('you are a genius!')
-              break
-        else:
-           print('hey bozo, I said 1~10')
-     except ValueError:
-        print('please enter a number')
-        continue
+    try:
+      print(answer)
+      guess = int(input('guess a number 1~10:  '))
+      if 0 < guess < 11:
+        if guess == answer:
+          print('you are a genius!')
+          break
+      else:
+        print('hey bozo, I said 1~10')
+    except ValueError:
+      print('please enter a number')
+      continue
 
 guess()
+'''
+# Exercise - Teachers Testing Answer
+
+import random
+
+def run_guess(guess, answer):
+    if  0 < guess < 11:
+        if guess == answer:
+            print('you are a genius!')
+            return True
+    else:
+        print('hey bozo, I said 1~10')
+        return False
+
+if __name__ == '__main__':
+    answer = random.randint(1, 10)
+    while True:
+        try:
+            guess = int(input('guess a number 1~10:  '))
+            if (run_guess(guess, answer)):
+                break
+        except ValueError:
+            print('please enter a number')
+            continue

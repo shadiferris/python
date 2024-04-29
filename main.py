@@ -2629,6 +2629,8 @@ def do_stuff(num):
 #print(do_stuff(10))
 '''
 # writing unit tests
+
+'''
 def do_stuff(num=0):
   try:
     if num:
@@ -2640,10 +2642,56 @@ def do_stuff(num=0):
   except ValueError as err:
     return err
 
-
-
 #print(do_stuff(10))
-
+'''
 # writing unit tests
 #
 # python3 -m unittest -v
+
+
+#Exercise - TESTING
+
+from random import randint
+import sys
+# generate a number 1~10
+#answer = randint(1, 10)
+'''
+# input from user?
+# check that input is a number 1~10
+while True:
+    try:
+        print(answer)
+        guess = int(input('guess a number 1~10:  '))
+        if  0 < guess < 11:
+            if guess == answer:
+                print('you are a genius!')
+                break
+        else:
+            print('hey bozo, I said 1~10')
+    except ValueError:
+        print('please enter a number')
+        continue
+'''
+
+def num_answer(num1,num2):
+    answer = randint(num1, num2)
+    return answer
+
+answer = num_answer(1, 10)
+
+def guess():
+  while True:
+     try:
+        print(answer)
+        guess = int(input('guess a number 1~10:  '))
+        if  0 < guess < 11:
+           if guess == answer:
+              print('you are a genius!')
+              break
+        else:
+           print('hey bozo, I said 1~10')
+     except ValueError:
+        print('please enter a number')
+        continue
+
+guess()

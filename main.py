@@ -2698,7 +2698,7 @@ def guess():
 guess()
 '''
 # Exercise - Teachers Testing Answer
-
+'''
 import random
 
 def run_guess(guess, answer):
@@ -2720,3 +2720,18 @@ if __name__ == '__main__':
         except ValueError:
             print('please enter a number')
             continue
+            
+'''
+
+# Image processing
+# https://pypi.org/project/pillow/
+
+# https://pillow.readthedocs.io/en/stable/
+
+#rotates it 45 degrees
+'''
+from PIL import Image
+with Image.open("./mountain1_image.jpeg") as im:
+    im.rotate(45).show()
+'''
+

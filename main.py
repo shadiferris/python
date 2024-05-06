@@ -2735,3 +2735,5 @@ with Image.open("./mountain1_image.jpeg") as im:
     im.rotate(45).show()
 '''
 
+# Images with python 1
+#https://pillow.readthedocs.io/en/stable/

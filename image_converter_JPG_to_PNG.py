@@ -11,8 +11,11 @@ new_directory = string(sys.argv[2])
 # Check if new/ arg exists, if not create
 
 if os.path.exists(new_directory) == False:
+    print(f"directory {new_directory} doesnt exist, will attempte to create the directory now!!")
     os.mkdir(new_directory, mode=0o777, *, dir_fd=None)
-
+else:
+    print("directory exists")
+    break
 # loop through pokedex 
 # convert images to png
 # save to the new folder

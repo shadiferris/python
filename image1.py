@@ -20,7 +20,10 @@ print(im.format, im.size, im.mode)
 #crooked_im.save("./images/crooked_greyscale.png", 'png')
 #crooked_im.show()
 
-box = (100, 100, 400, 400)
-cropped_im = im.crop(box)
-cropped_im.save("./images/cropped_im.png", 'png')
-cropped_im.show()
+#box = (100, 100, 400, 400)
+#cropped_im = im.crop(box)
+#cropped_im.save("./images/cropped_im.png", 'png')
+#cropped_im.show()
+
+
+

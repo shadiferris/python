@@ -25,5 +25,11 @@ print(im.format, im.size, im.mode)
 #cropped_im.save("./images/cropped_im.png", 'png')
 #cropped_im.show()
 
+#(width, height) = (im.width // 2, im.height // 2)
+#im_resized = im.resize((400, 400))
+
+#im_resized.save("./images/resize_im.png", 'png')
+#im_resized.show()
+
 
 

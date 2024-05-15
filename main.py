@@ -2737,3 +2737,14 @@ with Image.open("./mountain1_image.jpeg") as im:
 
 # Images with python 1
 #https://pillow.readthedocs.io/en/stable/
+
+
+# another python image library is opencv
+# https://opencv.org/get-started/
+
+
+import cv2 as cv
+img = cv.imread("/Users/shadiferris/Desktop/Shadi/python/project/python/images/squirtle.jpg")
+
+cv.imshow("Display window", img)
+k = cv.waitKey(0) # Wait for a keystroke in the window

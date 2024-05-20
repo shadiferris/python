@@ -40,9 +40,11 @@ password = 'shadsta1'
 server = smtplib.SMTP('smtp.gmail.com:587')
 server.ehlo('Gmail')
 server.starttls()
+
 server.login(email,password)
 fromaddr = 'shadi.ferris@gmail.com'
 toaddrs  = 'shadi.ferris@gmail.com'
 server.sendmail(fromaddr,toaddrs,message.as_string())
 
 server.quit()
+print("all good!!!")

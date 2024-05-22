@@ -2754,5 +2754,7 @@ k = cv.waitKey(0) # Wait for a keystroke in the window
 # https://docs.python.org/3/library/email.examples.html
 # email module - https://docs.python.org/3/library/email.html#module-email
 
+# Password Checker Project
 
+# password API
 

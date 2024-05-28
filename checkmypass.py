@@ -1,5 +1,6 @@
 import requests
 import hashlib
+import sys
 
 # sha hash generator - https://passwordsgenerator.net/sha1-hash-generator/
 # pwned password - https://haveibeenpwned.com/Passwords
@@ -45,6 +46,9 @@ def main():
         print(f"The password '{password}' has been found {count} times... you should probably change it!")
     else:
         print(f"The password '{password}' was NOT found. Carry on!")
-
 if __name__ == "__main__":
     main()
+
+# can be executed using the following method:
+# --> python3 checkmypass.py
+# input will check password strength one at a time

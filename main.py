@@ -2758,3 +2758,6 @@ k = cv.waitKey(0) # Wait for a keystroke in the window
 
 # password API
 
+# password checker
+# Hashlab - https://docs.python.org/3/library/hashlib.html
+# SHA1 Hash generator - https://passwordsgenerator.net/sha1-hash-generator/

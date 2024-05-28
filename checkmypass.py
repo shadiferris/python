@@ -16,9 +16,10 @@ def request_api_data(query_char):
 
 def get_password_leaks_count(hashes, hash_to_check):
     hashes = (line.split(':') for line in hashes.text.splitlines())
-    #print(hashes)
     for h, count in hashes:
-        print(h, count)
+        if h == hash_to_check:
+            return int(count)
+    return 0
 
 
 def pwned_api_check(password):
@@ -36,4 +37,14 @@ def pwned_api_check(password):
 
 #request_api_data('CBFDA')
 
-pwned_api_check('123')
+#pwned_api_check('123')
+def main():
+    password = input("Enter a password to check if it has been pwned: ")
+    count = pwned_api_check(password)
+    if count:
+        print(f"The password '{password}' has been found {count} times... you should probably change it!")
+    else:
+        print(f"The password '{password}' was NOT found. Carry on!")
+
+if __name__ == "__main__":
+    main()

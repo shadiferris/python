@@ -2765,3 +2765,37 @@ k = cv.waitKey(0) # Wait for a keystroke in the window
 
 # Twitter API
 # Tweepy - https://www.tweepy.org/
+
+#SMS with python
+# Twilio - https://www.twilio.com/docs
+
+
+# can sent messages from twilio services using the following code. 
+# costs are included, up to 5c a message sent using their services
+'''
+curl 'https://api.twilio.com/2010-04-01/Accounts/AC5e0cb34036184dd710fa475d434475ac/Messages.json' -X POST \
+--data-urlencode 'To=+61414543296' \
+--data-urlencode 'From=+14176092691' \
+--data-urlencode 'Body=hello there' \
+-u AC5e0cb34036184dd710fa475d434475ac:[AuthToken]
+
+'''
+#using python:
+'''
+from twilio.rest import Client
+
+account_sid = 'AC5e0cb34036184dd710fa475d434475ac'
+auth_token = '[AUTH_TOKEN]'
+client = Client(account_sid, auth_token)
+
+message = client.messages.create(
+  from_='+14176092691',
+  body='HELLO!!!',
+  to='+61414543296'
+)
+
+print(message.sid)
+'''
+
+
+#OR you can use https://ntfy.sh/

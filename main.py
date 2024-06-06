@@ -2793,7 +2793,6 @@ message = client.messages.create(
   body='HELLO!!!',
   to='+61414543296'
 )
-
 print(message.sid)
 '''
 

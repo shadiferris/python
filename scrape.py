@@ -1,3 +1,5 @@
+# scrapy framework - https://scrapy.org/
+
 import requests
 from bs4 import BeautifulSoup
 import pprint

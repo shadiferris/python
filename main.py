@@ -326,8 +326,8 @@ print('him' in 'This is a story of a girl')
 
 #count how many times string "orange" appears in the list
 print(items.count("orange"))
-'''
 
+'''
 # List Method 3
 #
 '''
@@ -513,8 +513,8 @@ print(type(my_tuple))
 print(my_tuple[2])
 
 print("mango" in my_tuple)
+print(my_tuple)
 '''
-
 #Tuple
 # Tuple method - https://www.w3schools.com/python/python_ref_tuple.asp
 '''
@@ -2802,9 +2802,10 @@ print(message.sid)
 #
 
 #web scraping
-
+'''
 from bs4 import BeautifulSoup
 soup = BeautifulSoup("<p>Some<b>bad<i>HTML")
 print(soup.prettify())
 
 soup = BeautifulSoup("<tag1>Some<tag2/>bad<tag3>XML", "xml")
+'''

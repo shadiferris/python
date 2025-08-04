@@ -290,7 +290,7 @@ print(numbers3)
 numbers3.extend([102,103,104])
 
 print(numbers3)
-
+'''
 #Remove (pop), removes end of list
 numbers4 = [1,2,3,4,5,6]
 print(numbers3)
@@ -302,7 +302,7 @@ print(numbers4)
 numbers4.pop(0)
 
 print(numbers4)
-
+'''
 #clear
 numbers5 = [1,2,3,4,5,6]
 numbers5.clear()

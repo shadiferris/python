@@ -58,7 +58,8 @@ print(c)
 '''
 
 # Augmented Assignment Operator
-'''some_value = 5
+"""
+some_value = 5
 some_value += 5
 
 print(some_value)
@@ -75,7 +76,7 @@ counter -= 1
 counter *= 2
 
 print(counter) #what will this print?
-'''
+"""
 
 #String
 '''
@@ -292,8 +293,10 @@ numbers3.extend([102,103,104])
 print(numbers3)
 '''
 #Remove (pop), removes end of list
+
+'''
 numbers4 = [1,2,3,4,5,6]
-print(numbers3)
+print(numbers4)
 
 numbers4.pop()
 
@@ -302,6 +305,8 @@ print(numbers4)
 numbers4.pop(0)
 
 print(numbers4)
+'''
+
 '''
 #clear
 numbers5 = [1,2,3,4,5,6]

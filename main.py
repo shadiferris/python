@@ -144,10 +144,21 @@ print(index[::-2]) # prints the string backwards every other character
 print(index[-2])
 '''
 
+# Enumerate (This function takes an iterable (like a list, tuple, or string) and returns pairs of values:)
+# - the index (starting from 0 by default)
+
+# - the item (the element from the list)
+
+'''
+list_name = ["apple", "banana", "cherry"]
+print(list(enumerate(list_name)))
+'''
+
 #Immutability
 
 # [start:stop:stepover]
-'''selfish = "01234567"
+'''
+selfish = "01234567"
 
 selfish = selfish + 8
 
@@ -168,6 +179,17 @@ print(new)
 print(new2)
 '''
 
+#method summary
+'''
+strip_strip = "I am along"
+
+new = strip_strip.strip('a')
+print(new)
+
+start = strip_strip.startswith('I')# True
+print(start)
+
+'''
 # Boolean
 # True or False
 '''
@@ -196,9 +218,9 @@ password_length = len(password)
 
 length = "*" * int(password_length)
 
-print(f'Your {username}, of {length} is {password_length} characters long')
-
+print(f'Your Username is - {username}, of {length} is {password_length} characters long')
 '''
+
 
 # List
 
@@ -214,7 +236,7 @@ print(random[3])
 '''
 
 # List slicing
-# lists are mutable, strings are not mutable
+# lists are mutable, strings are immutable
 '''
 cart = [
 "apples",
@@ -232,7 +254,7 @@ print(cart)
 '''
 
 #What is the output of this code?
-#Before you clikc RUN, guess the output of each print statement!
+#Before you click RUN, guess the output of each print statement!
 '''
 new_list = ['a', 'b', 'c']
 print(new_list[1])
@@ -259,10 +281,12 @@ access = matrix[2][1]
 
 print(matrix)
 print(access)
-
+'''
 # access "Oranges" and print it:
+'''
 basket = ["Banana", ["Apples", ["Oranges"], "Blueberries"]];
 print(basket[1][1][0])
+print(basket[1][1])
 '''
 
 # List Method 2
@@ -449,6 +473,9 @@ print(user.get('age', 20))
 
 #Dictionary Methods 2
 '''
+
+
+
 user = {
   'basket': [1,2,3],   
   True: 3,
@@ -474,6 +501,8 @@ print(user2)
 print(user.popitem())
 
 print(user)
+
+
 '''
 
 # Exercise Dictionary Methods
@@ -505,8 +534,8 @@ user2 = user_profile.copy()
 user2.update({'age': 50, 'username': 'User2'})
 print(user_profile)
 print(user2)
-
 '''
+
 
 #Tuple
 #immutable lists
@@ -525,7 +554,7 @@ print(my_tuple)
 '''
 my_tuple = (1,2,3,4,5,5,5)
 
-new_tuple = my_tuple[1:2]
+new_tuple = my_tuple[1::]
 
 print(new_tuple)
 
@@ -704,8 +733,8 @@ for i in range(1,5):
   for n in ['a', 'b', 'c', 'd', 'e']:
     for o in ["x","y","z"]:
       print(i , n, o)
-'''
 
+'''
 # iterable
 
 # these objects are iterable:
@@ -793,8 +822,13 @@ while i < 10:
   #break
 else:
   print("done with all the work")
-'''
 
+
+for i in enumerate(list(range(10))):
+    print(i)
+    print(type(i))
+
+'''
 #While loops 2
 '''
 while True:

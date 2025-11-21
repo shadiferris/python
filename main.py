@@ -826,7 +826,7 @@ else:
 
 for i in enumerate(list(range(10))):
     print(i)
-    print(type(i))
+    #print(type(i))
 
 '''
 #While loops 2
@@ -835,7 +835,7 @@ while True:
   response = input("what do you want to do? ")
   if (response == "bye"):
     break
-  
+
 '''
 
 # break, continue, pass
@@ -855,8 +855,8 @@ while i < len(my_list):
   i += 1
   #break
   continue
-'''
 
+'''
 # our first GUI
 
 #Exercise!
@@ -894,11 +894,11 @@ for row in picture:
 '''
 # Exercise : Find Duplicates
 '''
-some_list = ['a', 'b', 'c', 'b', 'd', 'm', 'n', 'n']
+some_list = ['a', 'b', 'c', 'b', 'd', 'm', 'n', 'n', 'b']
 
 duplicates =[]
 for value in some_list:
-  if some_list.count(value) > 1:
+  if some_list.count(value) > 2:
     if value not in duplicates: # lists single value in list.
       duplicates.append(value)
    
@@ -948,9 +948,9 @@ def print_hello_default(name="slim shady", age="infinite"):
   print(f"hellooo! {name} {age}")
 
 
-print_hello_default()
-
+print_hello_default("luke", "sky")
 '''
+
 
 # Return
 #

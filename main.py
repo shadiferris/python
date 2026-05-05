@@ -1027,12 +1027,12 @@ print(test.__doc__)
 '''
 def is_odd_or_even(num):
   #num = int(input("pick a number? "))
-  return num % 2 != 0
+  return num % 2 == 0
 
 
-print(is_odd_or_even(5))
+print(is_odd_or_even(4))
+
 '''
-
 # *args and **kwargs
 '''
 def super_func(*args, **kwargs):
@@ -1045,9 +1045,17 @@ def super_func(*args, **kwargs):
   return sum(args) + total
 
 
-print(super_func(1,2,3,4,5, num1=5, num2=10))
-'''
+print(super_func(1,2,3,4,5,6, num1=5, num2=10))
 
+'''
+'''
+values = [2,3,4,5]
+total = 0
+for items in values:
+    total += items
+    
+print(f' item total is {total}')
+'''
 # Exercise Functions (my answer)
 # Highest Even: Write a function to find the highest even number from the list.
 '''
